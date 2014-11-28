@@ -1,0 +1,156 @@
+<script type="text/javascript">
+$(document).ready(function () {
+
+   $('#video_avatar').val("");
+   $("#show_error_video").html(" ");
+ $("#video_avatar").change(function(event){
+       var uploaded_file=$("#video_avatar").val();
+
+//display the file size
+ var iSize = ($("#video_avatar")[0].files[0].size / 1024); 
+     if (iSize / 1024 > 1) 
+     { 
+        if (((iSize / 1024) / 1024) > 1) 
+        { 
+            iSize = (Math.round(((iSize / 1024) / 1024) * 100) / 100);
+            $("#lblSize").html( iSize + "Gb"); 
+        }
+        else
+        { 
+            iSize = (Math.round((iSize / 1024) * 100) / 100)
+            $("#lblSize").html( iSize + "Mb"); 
+        } 
+     } 
+     else 
+     {
+        iSize = (Math.round(iSize * 100) / 100)
+        $("#lblSize").html( iSize  + "kb"); 
+     }    
+
+
+
+      //validate type
+      $("#show_error_video").html(" ").hide();
+//check file type
+var ext = $('#video_avatar').val().split('.').pop().toLowerCase();
+if($.inArray(ext, ['mp4','flv','webm','avi','ogv','3gp','mov','rm','swf','wmv']) == -1) {
+        $("#show_error_video").html("This is not Video file").show();
+        //show no files selected
+        $('#video_avatar').val("");
+        $(".uploaded_video_file_names ul li").html(" ");
+        $("#lblSize").html( " "); 
+        return false;
+    }
+
+//check format
+   var file = $('#video_avatar')[0].files[0];
+  if (file.size && file.size > 26214400) {
+              $("#show_error_video").html("File size must be within 25 Mb or below").show()
+                //show no files selected
+              $('#video_avatar').val("");
+               $(".uploaded_video_file_names ul li").html(" ");
+               $("#lblSize").html( " "); 
+              return false;   
+            }
+
+       $(".uploaded_video_file_names ul li").html('<li style="margin-top: 16px;" ><span class="lead text-success" style="background: none repeat scroll 0% 0% powderblue;">'+uploaded_file+'</span></li>');
+    });//method ends
+
+
+$("input[type=radio]").click(function(){
+$("#error_explanation").hide();
+})
+
+   
+ $("#convert").click(function(){
+  // check is done at the controllers end so commented
+//var convert_to = $("input[type=radio]:checked").val();
+//if (convert_to === 'undefined' )
+//{
+  $(this).html("<i>Converting</i> <i class='fa fa-spinner fa-spin fa-2x' style='padding-left: 5px'></i>");
+    // NProgress.configure({ showSpinner: false });
+    // NProgress.start();
+  //}else{
+
+   //     $("#show_error_video").html("Please select conversion type").show();
+ // }
+
+
+
+ });   
+
+
+
+
+});
+</script>
+
+<div class="container">
+
+
+
+ <%= form_for(@video,:html=>{:multipart => true ,:remote=>true,:class=>"form-horizontal row",:role=>"form"}) do |f |%>
+
+    <div class="row">
+             <div id="flash_messages_video" class="col-lg-8 col-lg-offset-2 text-center">
+                <% if flash[:error] %>
+                    <%= content_tag :div, flash['value'], :id => "flash_error" %>
+                <% end %>
+            </div>
+         </div>
+
+<div class="row" style="margin-right: 30px; margin-left: 30px;">
+   <% if @video.errors.any? %>
+    <div id="error_explanation" class="col-lg-12 text-center text-danger">
+     <ul>
+      <% @video.errors.full_messages.each do |msg| %>
+        <li style="list-style: none outside none;" class="text-center">
+          <%= msg %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>  
+<div class="row">
+   <div class="form-group">
+<div class="col-lg-4 col-md-offset-2">
+    <a href="javascript:void(0);" class="upload btn btn-success">
+        <i class="fa fa-upload fa-lg" style="padding-right: 5px"></i>
+        Upload Video
+        <%= f.file_field :avatar,:class=>"opacity"%></a><span style="margin-left: 10px; font-weight: bold;"><small>not more than 25 mb</small></span>
+        
+</div>
+
+
+<div class="col-lg-6 col-md-offset-2 uploaded_video_file_names text-success">
+<ul style="list-style: none outside none;"  class="col-lg-8 form-group" >
+<li></li>
+</ul>
+</div>      
+   </div>
+<p id="lblSize" class="pull-left col-lg-8 col-lg-offset-2 text-info"></p>
+ <p id="show_error_video" class="col-lg-offset-2  col-lg-8 alert alert-danger" style="display:none;"></p>
+
+
+   <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-8 ">
+         <button id="convert" type="submit" class="btn btn-info btn-block">Convert to mp4,ogg and web formats</button>
+      </div>
+   </div>
+ </div>    
+<%end%>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

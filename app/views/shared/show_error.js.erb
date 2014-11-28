@@ -1,0 +1,23 @@
+ <% if type== "Video" %>
+    // use the same for youtube videos as well
+	 $('#flash_messages_video').show();
+	 $('#flash_messages_video').html("<%= escape_javascript raw(flash_display) %>");
+	 $("#convert").html("Convert");
+	 $('#video_avatar').val("");
+	 $("#lblSize").html(" "); 
+	 $(".uploaded_video_file_names ul li").html(" ");
+
+	 <% elsif type==  "Image" %>
+	  
+	 $('#flash_messages_image').show();
+	 $('#flash_messages_image').html("<%= escape_javascript raw(flash_display) %>");
+	 
+
+	<% elsif type==  "Audio" %>
+	  
+	 $('#flash_messages_audio').show();
+	 $('#flash_messages_audio').html("<%= escape_javascript raw(flash_display) %>");
+	
+
+
+<%end%>

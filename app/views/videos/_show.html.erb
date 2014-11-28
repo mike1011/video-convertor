@@ -1,0 +1,128 @@
+<script type="text/javascript">
+    
+    
+$(document).ready(function() {
+    NProgress.done();
+
+    $('video,audio').mediaelementplayer({
+        alwaysShowControls: true,
+        videoVolume: 'horizontal',
+        features: ['playpause','progress','current','duration','tracks','volume','fullscreen'],
+        enableAutosize: true,
+         // shows debug errors on screen
+        enablePluginDebug: false,
+        // remove or reorder to change plugin priority
+        plugins: ['flash','silverlight'],
+        // path to Flash and Silverlight plugins
+        pluginPath: '/media_element/',
+        // name of flash file
+        flashName: 'flashmediaelement.swf',
+        // name of silverlight file
+        silverlightName: 'silverlightmediaelement.xap',
+        // default if the <video width> is not specified
+        defaultVideoWidth: 230,
+        // default if the <video height> is not specified    
+        defaultVideoHeight: 135,
+        // overrides <video width>
+        //pluginWidth: -1,
+        // overrides <video height>      
+        //pluginHeight: -1,
+        // rate in milliseconds for Flash and Silverlight to fire the timeupdate event
+        // larger number is less accurate, but less strain on plugin->JavaScript bridge
+        timerRate: 250,
+        // method that fires when the Flash or Silverlight object is ready
+        success: function (mediaElement, domObject) {
+             
+            // add event listener
+           // mediaElement.addEventListener('timeupdate', function(e) {
+                 
+      // document.getElementById('current-time').innerHTML = mediaElement.currentTime;}, false);
+             
+            // call the play method
+            mediaElement.play();
+             
+        },
+        // fires when a problem is detected
+        error: function () {
+         
+        }
+        
+    });
+
+
+
+});
+    
+
+
+
+</script>
+
+	
+    <div class="container">
+			
+            <div class="row">
+             <div id="flash_messages_video" class="col-lg-8 col-lg-offset-2 text-center">
+                <% if flash[:error] %>
+                    <%= content_tag :div, flash['value'], :id => "flash_error" %>
+                <% end %>
+            </div>
+         </div>
+
+
+
+        <div class="row" style="padding: 30px;">
+
+            <div class="col-lg-7">
+              
+					<video width="620" height="440">
+					    <source src="<%= @video.avatar.url%>"/>
+                        <source src="<%= @video.avatar.url(:mp4video)%>" />
+                        <source src="<%= @video.avatar.url(:oggvideo)%>" />
+                        <source src="<%= @video.avatar.url(:webmvideo)%>" />
+                    </video>
+            </div>
+
+
+
+            <div class="col-md-4">
+
+
+
+
+          
+
+  <ul style="list-style: none outside none;">
+  <li><%= link_to 'Go Back and upload new', new_video_path,:remote=>true,:class=>"btn btn-default" %>
+   </li> 
+  <hr>
+
+     <li>
+        <%= link_to("Download in mp4", send_video_videos_path(:video_id=>@video.id,:con=>"mp4"),:class=>"btn btn-info btn-lg btn-block btn-xs") %>
+     </li><hr>
+     <li>
+        <%= link_to("Download in ogg", send_video_videos_path(:video_id=>@video.id,:con=>"ogg"),:class=>"btn btn-danger btn-lg btn-block btn-xs") %>
+     </li><hr> 
+     <li>
+        <%= link_to("Download in webm", send_video_videos_path(:video_id=>@video.id,:con=>"webm"),:class=>"btn btn-warning btn-lg btn-block btn-xs") %>
+     </li><hr>   
+    
+       <li>
+        <%= link_to("Download the original", send_video_videos_path(:video_id=>@video.id,:con=>"original"),:class=>"btn btn-success btn-lg btn-block btn-xs") %>
+     </li>
+     <hr>      
+  
+  </ul>
+	
+
+
+
+        
+      
+
+
+        	</div>
+		
+  </div>
+ </div>  
+
