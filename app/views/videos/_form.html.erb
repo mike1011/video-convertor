@@ -1,154 +1,210 @@
-<script type="text/javascript">
-$(document).ready(function () {
-
-   $('#video_avatar').val("");
-   $("#show_error_video").html(" ");
- $("#video_avatar").change(function(event){
-       var uploaded_file=$("#video_avatar").val();
-
-//display the file size
- var iSize = ($("#video_avatar")[0].files[0].size / 1024); 
-     if (iSize / 1024 > 1) 
-     { 
-        if (((iSize / 1024) / 1024) > 1) 
-        { 
-            iSize = (Math.round(((iSize / 1024) / 1024) * 100) / 100);
-            $("#lblSize").html( iSize + "Gb"); 
-        }
-        else
-        { 
-            iSize = (Math.round((iSize / 1024) * 100) / 100)
-            $("#lblSize").html( iSize + "Mb"); 
-        } 
-     } 
-     else 
-     {
-        iSize = (Math.round(iSize * 100) / 100)
-        $("#lblSize").html( iSize  + "kb"); 
-     }    
-
-
-
-      //validate type
-      $("#show_error_video").html(" ").hide();
-//check file type
-var ext = $('#video_avatar').val().split('.').pop().toLowerCase();
-if($.inArray(ext, ['mp4','flv','webm','avi','ogv','3gp','mov','rm','swf','wmv']) == -1) {
-        $("#show_error_video").html("This is not Video file").show();
-        //show no files selected
-        $('#video_avatar').val("");
-        $(".uploaded_video_file_names ul li").html(" ");
-        $("#lblSize").html( " "); 
-        return false;
-    }
-
-//check format
-   var file = $('#video_avatar')[0].files[0];
-  if (file.size && file.size > 26214400) {
-              $("#show_error_video").html("File size must be within 25 Mb or below").show()
-                //show no files selected
-              $('#video_avatar').val("");
-               $(".uploaded_video_file_names ul li").html(" ");
-               $("#lblSize").html( " "); 
-              return false;   
-            }
-
-       $(".uploaded_video_file_names ul li").html('<li style="margin-top: 16px;" ><span class="lead text-success" style="background: none repeat scroll 0% 0% powderblue;">'+uploaded_file+'</span></li>');
-    });//method ends
-
-
-$("input[type=radio]").click(function(){
-$("#error_explanation").hide();
-})
-
-   
- $("#convert").click(function(){
-  // check is done at the controllers end so commented
-//var convert_to = $("input[type=radio]:checked").val();
-//if (convert_to === 'undefined' )
-//{
-  $(this).html("<i>Converting</i> <i class='fa fa-spinner fa-spin fa-2x' style='padding-left: 5px'></i>");
-    // NProgress.configure({ showSpinner: false });
-    // NProgress.start();
-  //}else{
-
-   //     $("#show_error_video").html("Please select conversion type").show();
- // }
-
-
-
- });   
-
-
-
-
-});
-</script>
-
 <div class="container">
 
-
-
- <%= form_for(@video,:html=>{:multipart => true ,:remote=>true,:class=>"form-horizontal row",:role=>"form"}) do |f |%>
-
-    <div class="row">
-             <div id="flash_messages_video" class="col-lg-8 col-lg-offset-2 text-center">
+            <br>
+            <div class="row">
+              <small>
+             <div id="flash_messages_video" class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center" style="color: purple; padding: 20px; font-size: medium;display:none;">
                 <% if flash[:error] %>
                     <%= content_tag :div, flash['value'], :id => "flash_error" %>
                 <% end %>
             </div>
+            </small>
+            
          </div>
 
-<div class="row" style="margin-right: 30px; margin-left: 30px;">
-   <% if @video.errors.any? %>
-    <div id="error_explanation" class="col-lg-12 text-center text-danger">
-     <ul>
-      <% @video.errors.full_messages.each do |msg| %>
-        <li style="list-style: none outside none;" class="text-center">
-          <%= msg %>
-        </li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-</div>  
-<div class="row">
-   <div class="form-group">
-<div class="col-lg-4 col-md-offset-2">
-    <a href="javascript:void(0);" class="upload btn btn-success">
-        <i class="fa fa-upload fa-lg" style="padding-right: 5px"></i>
-        Upload Video
-        <%= f.file_field :avatar,:class=>"opacity"%></a><span style="margin-left: 10px; font-weight: bold;"><small>not more than 25 mb</small></span>
+
+
+            
+
+     <!-- The file upload form used as target for the file upload widget -->
+<!--     <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data"> -->
+ <%= form_for(@video,:html=>{:id=>"videoupload",:multipart => true,:remote=>true,:class=>"form-horizontal col-md-8 col-md-offset-2",:role=>"form"}) do |f |%>
+
+
+
+
+
+   <div class="btn-group btn-group-sm col-md-12 col-md-offset-4">
+                <!-- The fileinput-button span is used to style the file input field as button -->
+                <span class="btn btn-option btn-xs fileinput-button">
+                   <a class="upload" href="javascript:void(0);">
+                  <i style="padding-right: 5px" class="fa fa-film fa-lg"></i>
+                  Add a Video *
+                  <input type="file" id="video_avatar" name="video[avatar]" class="opacity" accept="video/*" required>
+                  <input type="hidden" name="video_preview_hidden" id="video_preview_hidden"  required>
+                </a>
+                </span>    
+                <button type="submit" id="submit_button" class="btn btn-primary nposting btn-sm "  data-remote="true">   <i style="padding-right: 5px" class="fa fa-circle-o fa-lg"></i> Convert </button>
+
+
+
+
+</div>
+<p class="text-info text-center" id="show_upload_error"><small>Video Size should not be greater than 25 MB</small></p>
+
+            <!-- The table listing the files available for upload/download -->
+            <div class="col-lg-12 col table-responsive text-center">
+                    <table role="presentation" class="table table-striped "  id="uploads_table"><tbody class="files"></tbody></table>
+            </div>
+
+
+     
+           
+
+
+
+
+
+
+
+
+
+   <%end%><!-- form ends -->
+
+</div><!--  video container ends -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+      $('#submit_button').removeAttr('disabled');
+
+
+//26may015 using custom js instead of fileupload jquery
+  var $validator = $("#videoupload").validate({
+        rules: {
+       "video[avatar]": {
+                  required: true
+                
+                },
+         "video_preview_hidden": {
+                    required: function(element) {
+                        return $('#uploads_table').children('tbody').size() == 0;
+                    }
+                }, 
+          },
+            errorPlacement: function(error, element) {
+                 $("#show_upload_error").html("<span class='text-danger ' >Please add a video file</span>");
+              
+          },
+          invalidHandler: function(e,validator) {
+              //validator.errorList contains an array of objects, where each object has properties "element" and "message".  element is the actual HTML Input.
+              for (var i=0;i<validator.errorList.length;i++){
+                  //key value pair to show id=image_title,hence we need only id(value)
+                  console.log(validator.errorList[i].element.attributes['id'].value);
+                  //remove existing error border and show only new
+                  //$("form#videoupload").find("input").css({"color": "red"});
+                  $("a.upload").css({"color": "red"});
+
+                  //remove red from file type also use it in file.change method
+                  $("#video_avatar").parent().parent().find(".upload").css({"color": "#FFFFFF !mportant;"});
+                  $("#"+validator.errorList[0].element.attributes['id'].value).focus();
+                   
+              }
+              //validator.errorMap is an object mapping input names -> error messages
+              //this will display-place[title] : This field is required.
+              // for (var i in validator.errorMap) {
+              //   console.log(i, ":", validator.errorMap[i]);
+              // }
+          }, 
+          onkeyup: function (element, event) {
+            //will give the id of element in which we are typing to remove red error border on keyup
+            //console.log( event.target['id']);
+     
+                     // $("#"+event.target['id']).css({"color": "none"});
+                     $("a.upload").css({"color": "snow"});
+           
+              
+          },
+          submitHandler: function(form) {
+                    //disable the button
+                   $('#submit_button').attr('disabled','disabled');
+                   $("#submit_button").html("Converting <i class='fa fa-spin fa-spinner fa-lg'></i>");
+                     //$('input[type="submit"]').removeAttr('disabled');
         
-</div>
+                //using formdata to bind image and submit
+                var formData = new FormData(form);
+                $.ajax({
+                type: 'POST',
+                url: '/videos',
+                data:formData,
+                cache:false,
+                contentType: false,
+                processData: false,
+                 })
+                  .done(function (response) {
+                      if (response.success == 'success') {               
+                          //alert('success');    
+                         // $("#upload_progress_spinner").hide();
+                      } else {
+                          //alert('fail');
+                          $("#submit_button").html("<i style='padding-right: 5px' class='fa fa-circle-o fa-lg'></i> Convert");
+                          $('#submit_button').removeAttr('disabled');
+                          $("#show_upload_error").html("<span class='text-danger marginl10' ><b>There was some error while Posting,Please try again.</b></span>");
+                      }
+                  }).error(function() {
+                    //this will run when no server,or ajax cannot go forward
+                          $("#submit_button").html("<i style='padding-right: 5px' class='fa fa-circle-o fa-lg'></i>  Convert");
+                          $('#submit_button').removeAttr('disabled');
+                          $("#show_upload_error").html("<span class='text-danger marginl10' ><b>There is internal error,Please try again after some time.</b></span>");
+                  });
+             return false; // required to block normal submit since you used ajax
+            
+        }
+    });//validation ends
 
 
-<div class="col-lg-6 col-md-offset-2 uploaded_video_file_names text-success">
-<ul style="list-style: none outside none;"  class="col-lg-8 form-group" >
-<li></li>
-</ul>
-</div>      
-   </div>
-<p id="lblSize" class="pull-left col-lg-8 col-lg-offset-2 text-info"></p>
- <p id="show_error_video" class="col-lg-offset-2  col-lg-8 alert alert-danger" style="display:none;"></p>
-
-
-   <div class="form-group">
-      <div class="col-lg-offset-2 col-lg-8 ">
-         <button id="convert" type="submit" class="btn btn-info btn-block">Convert to mp4,ogg and web formats</button>
-      </div>
-   </div>
- </div>    
-<%end%>
-
-</div>
 
 
 
 
+var tbody = $('#uploads_table').children('tbody');
+     $("#video_avatar").change(function(event){
+
+$("a.upload").css({"color": "snow"});
+
+              //remove red color by submitting using jquery.validate
+             $("#video_avatar").parent().parent().find(".upload").css({"color": "#FFFFFF !mportant;"});
+             $("#show_upload_error").html("");
+             //remove the image onchange always
+             $('#uploads_table').children('tbody').html(" ");
+             
+       //check file type
+       var ext = $('#video_avatar').val().split('.').pop().toLowerCase();
+       console.log("extentsion is :"+ext);
+       if($.inArray(ext, ['mp4','flv','webm','avi','ogv','3gp','mov','rm','swf','wmv']) == -1) {
+            $("#show_upload_error").html("<span class='text-danger ' >This is not Video file</span>");
+           //show no files selected
+           $('#video_avatar').val("");
+               return false;
+           }
+ //check file size
+    var file = $('#video_avatar')[0].files[0];
+    console.log("size is :"+file.size);
+   if (file.size && file.size > 26214400) {
+          $("#show_upload_error").html("<span class='text-danger ' >Video size must be within 25 Mb or below</span>");      
+          //show no files selected
+           $('#video_avatar').val("");
+               return false;   
+             }
+        
+//preview video
+//prepare_video_player($("#video_avatar")[0].files[0]);
+ var video_size = Math.round($("#video_avatar")[0].files[0]['size']/1048576);
+ var video_extention=$('#video_avatar').val().split('.').pop().toLowerCase();
+      tbody.append('<tr class="">'+
+              '<td class="preview" colspan="2"><div id="video_div"></div></td>'+
+            '<td><input type="hidden" name="video_preview_hidden" id="video_preview_hidden" ><p class="name text-info"><strong>'+$("#video_avatar")[0].files[0]['name']+'</strong></p>'+
+             '<p class="size text-info"><small>'+video_extention+'|'+video_size+'MB</small></p>'+
+             '</td>'+
+             '</tr>');      
+       
+     });//method ends
 
 
+})//document ends
 
+
+</script>
 
 
 

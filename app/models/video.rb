@@ -1,14 +1,16 @@
 class Video < ActiveRecord::Base
 
 
-scope :recents, where('created_at < ?', 1.days.ago)
+scope :recents, where('created_at < ?', DateTime.now)
   validates_presence_of :avatar
   has_attached_file :avatar,
  :styles => {
     :mp4video => { :geometry => "640x480", :format => 'mp4', :convert_options => {:output => {:ar => 44100}} },
     :webmvideo =>{ :geometry => "1024x576", :format => 'webm', :convert_options => {:output => {:ar => 44100}} },
-    :oggvideo => { :geometry => "1024x576", :format => 'ogg', :convert_options => {:output => {:ar => 44100}} }
+    :oggvideo => { :geometry => "1024x576", :format => 'ogg', :convert_options => {:output => {:ar => 44100}} },
+    :preview => { :geometry => '300x300>', :format => 'jpg', :time => 5 }
   },
+
     processors: [:ffmpeg],
     :max_size => 25.megabytes,  
     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",

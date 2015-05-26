@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.remotipart
-//= require_tree .
+//= require media_element/mediaelement-and-player.min
+//= require jqueryValidation/dist/jquery.validate
+//= require jqueryValidation/dist/additional-methods
+//= require bootstrap.min

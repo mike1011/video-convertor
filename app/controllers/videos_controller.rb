@@ -24,12 +24,11 @@ class VideosController < ApplicationController
   # GET /videos/new
   # GET /videos/new.json
   def new
-    @video = Video.new
     Video.delete_database_and_files_on_server
+    @video = Video.new
    
 
     respond_to do |format|
-      format.js
       format.html # new.html.erb
       format.json { render json: @video }
     end
@@ -43,9 +42,7 @@ class VideosController < ApplicationController
   # POST /videos
   # POST /videos.json
   def create
-    p params
     @video = Video.new(params[:video])
-
     if @video.save
                  respond_to do |format|  
                   flash.now[:error]="Video converted successfully"

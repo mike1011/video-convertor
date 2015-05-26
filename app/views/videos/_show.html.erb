@@ -1,3 +1,93 @@
+<style type="text/css">
+.mejs-container.svg.mejs-video {
+    max-height: 432px;
+    max-width: 768px;
+    margin: 0 auto;
+}
+</style>
+
+	
+    <div class="container">
+			
+            <div class="row">
+             <div id="flash_messages_video" class="col-lg-8 col-lg-offset-2 text-center">
+                <% if flash[:error] %>
+                    <%= content_tag :div, flash['value'], :id => "flash_error" %>
+                <% end %>
+            </div>
+         </div>
+
+
+
+        <div class="row" style="padding: 30px;">
+
+            <div class="col-lg-7">
+              
+              <video autobuffer="autobuffer" preload="auto" style="width:100%;height:100%;" controls="controls" width="100%" height="100%" poster="<%= @video.avatar.url(:preview)%>" >
+                <source  src="<%= @video.avatar.url%>"  />
+                 <%if @video.avatar.expiring_url(:mp4video).present? %>
+                        <source type="video/mp4"  src="<%= @video.avatar.url(:mp4video)%>" />
+                    <%end%>
+                    <%if @video.avatar.expiring_url(:webmvideo).present? %>
+                        <source type="video/webm" src="<%= @video.avatar.url(:webmvideo)%>" />
+                     <%end%>       
+                     <%if @video.avatar.expiring_url(:oggvideo).present? %>
+                      <source type="video/ogg" src="<%= @video.avatar.url(:oggvideo)%>" />
+                     <%end%>  
+ 
+            </video>
+
+
+
+            </div>
+
+
+
+            <div class="col-md-4">
+
+
+
+
+          
+
+  <ul style="list-style: none outside none;">
+  <li><%= link_to 'Go Back and upload new', new_video_path,:class=>"btn btn-default" %>
+   </li> 
+  <hr>
+
+     <li>
+        <%= link_to("Download in mp4", send_video_videos_path(:video_id=>@video.id,:con=>"mp4"),:class=>"btn btn-info btn-lg btn-block btn-xs") %>
+     </li><hr>
+     <li>
+        <%= link_to("Download in ogg", send_video_videos_path(:video_id=>@video.id,:con=>"ogg"),:class=>"btn btn-danger btn-lg btn-block btn-xs") %>
+     </li><hr> 
+     <li>
+        <%= link_to("Download in webm", send_video_videos_path(:video_id=>@video.id,:con=>"webm"),:class=>"btn btn-warning btn-lg btn-block btn-xs") %>
+     </li><hr>   
+    
+       <li>
+        <%= link_to("Download the original", send_video_videos_path(:video_id=>@video.id,:con=>"original"),:class=>"btn btn-success btn-lg btn-block btn-xs") %>
+     </li>
+     <hr>      
+  
+  </ul>
+	
+
+
+
+        
+      
+
+
+        	</div>
+		
+  </div>
+ </div>  
+
+
+
+
+
 <script type="text/javascript">
     
     
@@ -57,72 +147,3 @@ $(document).ready(function() {
 
 
 </script>
-
-	
-    <div class="container">
-			
-            <div class="row">
-             <div id="flash_messages_video" class="col-lg-8 col-lg-offset-2 text-center">
-                <% if flash[:error] %>
-                    <%= content_tag :div, flash['value'], :id => "flash_error" %>
-                <% end %>
-            </div>
-         </div>
-
-
-
-        <div class="row" style="padding: 30px;">
-
-            <div class="col-lg-7">
-              
-					<video width="620" height="440">
-					    <source src="<%= @video.avatar.url%>"/>
-                        <source src="<%= @video.avatar.url(:mp4video)%>" />
-                        <source src="<%= @video.avatar.url(:oggvideo)%>" />
-                        <source src="<%= @video.avatar.url(:webmvideo)%>" />
-                    </video>
-            </div>
-
-
-
-            <div class="col-md-4">
-
-
-
-
-          
-
-  <ul style="list-style: none outside none;">
-  <li><%= link_to 'Go Back and upload new', new_video_path,:remote=>true,:class=>"btn btn-default" %>
-   </li> 
-  <hr>
-
-     <li>
-        <%= link_to("Download in mp4", send_video_videos_path(:video_id=>@video.id,:con=>"mp4"),:class=>"btn btn-info btn-lg btn-block btn-xs") %>
-     </li><hr>
-     <li>
-        <%= link_to("Download in ogg", send_video_videos_path(:video_id=>@video.id,:con=>"ogg"),:class=>"btn btn-danger btn-lg btn-block btn-xs") %>
-     </li><hr> 
-     <li>
-        <%= link_to("Download in webm", send_video_videos_path(:video_id=>@video.id,:con=>"webm"),:class=>"btn btn-warning btn-lg btn-block btn-xs") %>
-     </li><hr>   
-    
-       <li>
-        <%= link_to("Download the original", send_video_videos_path(:video_id=>@video.id,:con=>"original"),:class=>"btn btn-success btn-lg btn-block btn-xs") %>
-     </li>
-     <hr>      
-  
-  </ul>
-	
-
-
-
-        
-      
-
-
-        	</div>
-		
-  </div>
- </div>  
-
