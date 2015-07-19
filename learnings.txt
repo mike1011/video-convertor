@@ -66,5 +66,11 @@ heroku logs --tail
 ================add background image using css.scss===========
 change css to css.scss to use saas code in custom.css.scss file
 use  background: image-url("green_suburb.jpg") no-repeat center center fixed; 
+compile and add public/assets/green_suburb.jpg and add to commit
+check if image is present in public/assets/..jpg
+git add public/assets app/assets/stylesheets/custom.css.scss
+git push origin master
+git push origin master
+...dats it
 updated sass and saas-rails to above version to remove any anonymous class error during precompile
 cleaned and precompiled assets
