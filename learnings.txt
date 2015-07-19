@@ -1,0 +1,47 @@
+to use fontawesome -------
+download css
+*= require font-awesome
+add in manifest
+add application.rb
+update fontawesome to .css.scss.erb and update the code
+remove any stylesheet link in any layout/view file 
+
+===========refer http://stackoverflow.com/questions/11052398/rails-using-font-awesome=====
+first: add app/assets/fonts to the asset path (config/application.rb)
+
+config.assets.paths << Rails.root.join("app", "assets", "fonts")
+then move the font files into /assets/fonts (create the folder first)
+
+Now rename the font-awesome.css to font-awesome.css.scss.erb and edit it like this: change:
+
+@font-face {
+  font-family: "FontAwesome";
+  src: url('../font/fontawesome-webfont.eot');
+  src: url('../font/fontawesome-webfont.eot?#iefix') format('eot'), url('../font/fontawesome-webfont.woff') format('woff'), url('../font/fontawesome-webfont.ttf') format('truetype'), url('../font/fontawesome-webfont.svg#FontAwesome')    format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+to this:
+
+@font-face {
+  font-family: "FontAwesome";
+  src: url('<%= asset_path("fontawesome-webfont.eot") %>');
+  src: url('<%= asset_path("fontawesome-webfont.eot") + "?#iefix" %>') format('eot'), url('<%= asset_path("fontawesome-webfont.woff") %>') format('woff'), url('<%= asset_path("fontawesome-webfont.ttf") %>') format('truetype'), url('<%= asset_path("fontawesome-webfont.svg") + "#FontAwesome" %>') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+========restart app========
+heroku restart -a app_name
+heroku restart -a r-video-convertor
+============see logs==================
+heroku logs --tail
+==========update url of heroku===============
+ git remote rm heroku
+ heroku git:remote -a r-video-convertor
+
+ git push heroku master
+ heroku run rake db:migrate
+ heroku run rake assets:clean
+ heroku run rake assets:precompile
+ heroku restart -a r-video-convertor
