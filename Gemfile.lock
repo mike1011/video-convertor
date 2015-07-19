@@ -47,7 +47,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     eventmachine (1.0.7)
-    excon (0.45.3)
+    excon (0.45.4)
     execjs (2.5.2)
     heroku (3.39.5)
       heroku-api (>= 0.3.19)
@@ -123,7 +123,7 @@ GEM
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     rubyzip (1.1.7)
-    sass (3.4.15)
+    sass (3.2.19)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -166,7 +166,8 @@ DEPENDENCIES
   rails (= 3.2.19)
   rails_12factor
   remotipart
-  sass-rails (~> 3.2.3)
+  sass (~> 3.2.19)
+  sass-rails (~> 3.2.6)
   sqlite3
   therubyracer (= 0.9.9)
   thin
