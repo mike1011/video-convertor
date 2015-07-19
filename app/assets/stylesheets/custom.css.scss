@@ -4,7 +4,7 @@
 body{
 
      font-family: 'Arvo', serif !important;
-     background-image: asset-data-url("green_suburb.jpg");
+      background: image-url("green_suburb.jpg") no-repeat center center fixed; 
      -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
