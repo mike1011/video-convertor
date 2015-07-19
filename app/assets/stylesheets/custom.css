@@ -4,11 +4,18 @@
 body{
 
      font-family: 'Arvo', serif !important;
+     background: url('/assets/green_suburb.jpg') no-repeat center center fixed;
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color:#fff;
+    background-color:#333;
 
-
-    
 }
-
+.white{
+  color:#aaa !important;
+}
   .upload{
        padding: 8px 10px;
        position: relative;        
