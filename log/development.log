@@ -8876,3 +8876,574 @@ Served asset /application.js - 304 Not Modified (22ms)
 
 Started GET "/assets/font-awesome-4.0.3/css/font-awesome.min.css?body=1" for 127.0.0.1 at 2014-11-28 07:18:38 -0800
 Served asset /font-awesome-4.0.3/css/font-awesome.min.css - 304 Not Modified (1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-10 15:43:57 -0700
+Connecting to database specified by database.yml
+Processing by VideosController#new as HTML
+  [1m[36mVideo Load (0.3ms)[0m  [1mSELECT "videos".* FROM "videos" WHERE (created_at < '2015-07-10 22:43:57')[0m
+  [1m[35mSQL (11.4ms)[0m  DELETE FROM "videos" WHERE "videos"."id" = 1
+  [1m[36mSQL (5.2ms)[0m  [1mDELETE FROM "videos" WHERE "videos"."id" = 2[0m
+  [1m[35mSQL (7.8ms)[0m  DELETE FROM "videos" WHERE "videos"."id" = 3
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM "videos" WHERE "videos"."id" = 4[0m
+  [1m[35mSQL (12.9ms)[0m  DELETE FROM "videos" WHERE "videos"."id" = 5
+  [1m[36mSQL (9.6ms)[0m  [1mDELETE FROM "videos" WHERE "videos"."id" = 6[0m
+  Rendered videos/_form.html.erb (3.7ms)
+  Rendered videos/_new.html.erb (4.9ms)
+  Rendered videos/new.html.erb within layouts/application (19.3ms)
+Compiled bootstrap.min.css  (0ms)  (pid 8691)
+Compiled media_element/mediaelementplayer.min.css  (0ms)  (pid 8691)
+Compiled custom.css  (0ms)  (pid 8691)
+Compiled nprogress.css  (0ms)  (pid 8691)
+Compiled application.css  (42ms)  (pid 8691)
+Compiled jquery.js  (8ms)  (pid 8691)
+Compiled jquery_ujs.js  (0ms)  (pid 8691)
+Compiled jquery.iframe-transport.js  (15ms)  (pid 8691)
+Compiled jquery.remotipart.js  (30ms)  (pid 8691)
+Compiled media_element/mediaelement-and-player.min.js  (1ms)  (pid 8691)
+Compiled jqueryValidation/dist/jquery.validate.js  (1ms)  (pid 8691)
+Compiled jqueryValidation/dist/additional-methods.js  (1ms)  (pid 8691)
+Compiled bootstrap.min.js  (0ms)  (pid 8691)
+Compiled application.js  (184ms)  (pid 8691)
+Compiled font-awesome-4.0.3/css/font-awesome.min.css  (0ms)  (pid 8691)
+Completed 200 OK in 546.8ms (Views: 430.0ms | ActiveRecord: 53.4ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /bootstrap.min.css - 200 OK (10ms)
+
+
+Started GET "/assets/media_element/mediaelementplayer.min.css?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /media_element/mediaelementplayer.min.css - 200 OK (5ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /custom.css - 200 OK (1ms)
+
+
+Started GET "/assets/nprogress.css?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /nprogress.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /jquery.js - 200 OK (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /jquery_ujs.js - 200 OK (10ms)
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /jquery.iframe-transport.js - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /jquery.remotipart.js - 200 OK (3ms)
+
+
+Started GET "/assets/media_element/mediaelement-and-player.min.js?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /media_element/mediaelement-and-player.min.js - 200 OK (8ms)
+
+
+Started GET "/assets/jqueryValidation/dist/jquery.validate.js?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /jqueryValidation/dist/jquery.validate.js - 200 OK (1ms)
+
+
+Started GET "/assets/jqueryValidation/dist/additional-methods.js?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /jqueryValidation/dist/additional-methods.js - 200 OK (9ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /bootstrap.min.js - 200 OK (14ms)
+
+
+Started GET "/assets/font-awesome-4.0.3/css/font-awesome.min.css?body=1" for 127.0.0.1 at 2015-07-10 15:43:58 -0700
+Served asset /font-awesome-4.0.3/css/font-awesome.min.css - 200 OK (2ms)
+
+
+Started POST "/videos" for 127.0.0.1 at 2015-07-10 15:44:14 -0700
+Processing by VideosController#create as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+GM3JpQcXCQNeoTNUxfYypXoLWJZ31AvrWooV+S1As0=", "video"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x00000004990eb8 @original_filename="small.webm", @content_type="video/webm", @headers="Content-Disposition: form-data; name=\"video[avatar]\"; filename=\"small.webm\"\r\nContent-Type: video/webm\r\n", @tempfile=#<Tempfile:/tmp/RackMultipart20150710-8691-1f8ho33>>}, "video_preview_hidden"=>""}
+[paperclip] [ffmpeg] ffprobe "/tmp/small20150710-8691-1hjlwaz.webm" 2>&1
+[paperclip] [ffmpeg] Command Success
+[paperclip] [ffmpeg] Making...
+[paperclip] [ffmpeg] Building Destination File: 'small20150710-8691-1hjlwaz' + 'mp4'
+[paperclip] [ffmpeg] Destination File Built
+[paperclip] [ffmpeg] Adding Geometry
+[paperclip] [ffmpeg] Extracting Target Dimensions
+[paperclip] [ffmpeg] Target Size is Available
+[paperclip] [ffmpeg] Keeping Aspect Ratio
+[paperclip] [ffmpeg] Resize
+[paperclip] [ffmpeg] Convert Options: 640x364
+[paperclip] [ffmpeg] Adding Format
+[paperclip] [ffmpeg] Adding Source
+[paperclip] [ffmpeg] Building Parameters
+[paperclip] [ffmpeg] -i :source -ar 44100 -s 640x364 -acodec aac -strict experimental -y :dest
+Command :: PATH=/home/ubuntu/bin/:$PATH; avconv -i '/tmp/small20150710-8691-1hjlwaz.webm' -ar 44100 -s 640x364 -acodec aac -strict experimental -y '/tmp/small20150710-8691-1hjlwaz20150710-8691-rrjs2s.mp4'
+[paperclip] An error was received while processing: #<Paperclip::Error: error while processing video for small20150710-8691-1hjlwaz: Command 'PATH=/home/ubuntu/bin/:$PATH; avconv -i '/tmp/small20150710-8691-1hjlwaz.webm' -ar 44100 -s 640x364 -acodec aac -strict experimental -y '/tmp/small20150710-8691-1hjlwaz20150710-8691-rrjs2s.mp4'' returned 1. Expected 0
+Here is the command output:
+
+>
+[paperclip] [ffmpeg] ffprobe "/tmp/small20150710-8691-1hjlwaz.webm" 2>&1
+[paperclip] [ffmpeg] Command Success
+[paperclip] [ffmpeg] Making...
+[paperclip] [ffmpeg] Building Destination File: 'small20150710-8691-1hjlwaz' + 'webm'
+[paperclip] [ffmpeg] Destination File Built
+[paperclip] [ffmpeg] Adding Geometry
+[paperclip] [ffmpeg] Extracting Target Dimensions
+[paperclip] [ffmpeg] Target Size is Available
+[paperclip] [ffmpeg] Keeping Aspect Ratio
+[paperclip] [ffmpeg] Resize
+[paperclip] [ffmpeg] Convert Options: 1024x584
+[paperclip] [ffmpeg] Adding Format
+[paperclip] [ffmpeg] Adding Source
+[paperclip] [ffmpeg] Building Parameters
+[paperclip] [ffmpeg] -i :source -ar 44100 -s 1024x584 -acodec libvorbis -vcodec libvpx -f webm -y :dest
+Command :: PATH=/home/ubuntu/bin/:$PATH; ffmpeg -i '/tmp/small20150710-8691-1hjlwaz.webm' -ar 44100 -s 1024x584 -acodec libvorbis -vcodec libvpx -f webm -y '/tmp/small20150710-8691-1hjlwaz20150710-8691-1tytkur.webm'
+Command :: PATH=/home/ubuntu/bin/:$PATH; file -b --mime '/tmp/small20150710-8691-1hjlwaz20150710-8691-1tytkur.webm'
+[paperclip] [ffmpeg] ffprobe "/tmp/small20150710-8691-1hjlwaz.webm" 2>&1
+[paperclip] [ffmpeg] Command Success
+[paperclip] [ffmpeg] Making...
+[paperclip] [ffmpeg] Building Destination File: 'small20150710-8691-1hjlwaz' + 'ogg'
+[paperclip] [ffmpeg] Destination File Built
+[paperclip] [ffmpeg] Adding Geometry
+[paperclip] [ffmpeg] Extracting Target Dimensions
+[paperclip] [ffmpeg] Target Size is Available
+[paperclip] [ffmpeg] Keeping Aspect Ratio
+[paperclip] [ffmpeg] Resize
+[paperclip] [ffmpeg] Convert Options: 1024x584
+[paperclip] [ffmpeg] Adding Format
+[paperclip] [ffmpeg] Adding Source
+[paperclip] [ffmpeg] Building Parameters
+[paperclip] [ffmpeg] -i :source -ar 44100 -s 1024x584 -y :dest
+Command :: PATH=/home/ubuntu/bin/:$PATH; ffmpeg -i '/tmp/small20150710-8691-1hjlwaz.webm' -ar 44100 -s 1024x584 -y '/tmp/small20150710-8691-1hjlwaz20150710-8691-1f3r2sp.ogg'
+Command :: PATH=/home/ubuntu/bin/:$PATH; file -b --mime '/tmp/small20150710-8691-1hjlwaz20150710-8691-1f3r2sp.ogg'
+[paperclip] [ffmpeg] ffprobe "/tmp/small20150710-8691-1hjlwaz.webm" 2>&1
+[paperclip] [ffmpeg] Command Success
+[paperclip] [ffmpeg] Making...
+[paperclip] [ffmpeg] Building Destination File: 'small20150710-8691-1hjlwaz' + 'jpg'
+[paperclip] [ffmpeg] Destination File Built
+[paperclip] [ffmpeg] Adding Geometry
+[paperclip] [ffmpeg] Extracting Target Dimensions
+[paperclip] [ffmpeg] Target Size is Available
+[paperclip] [ffmpeg] Keeping Aspect Ratio
+[paperclip] [ffmpeg] Shrink Only
+[paperclip] [ffmpeg] Convert Options: 300x170
+[paperclip] [ffmpeg] Adding Format
+[paperclip] [ffmpeg] Adding Source
+[paperclip] [ffmpeg] Building Parameters
+[paperclip] [ffmpeg] -ss 5 -i :source -s 300x170 -vframes 1 -f image2 -y :dest
+Command :: PATH=/home/ubuntu/bin/:$PATH; ffmpeg -ss 5 -i '/tmp/small20150710-8691-1hjlwaz.webm' -s 300x170 -vframes 1 -f image2 -y '/tmp/small20150710-8691-1hjlwaz20150710-8691-1aeuybf.jpg'
+Command :: PATH=/home/ubuntu/bin/:$PATH; file -b --mime '/tmp/small20150710-8691-1hjlwaz20150710-8691-1aeuybf.jpg'
+  [1m[35m (0.5ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+CONVERSION FAILED==================
+show flash message ajax======== 
+  Rendered shared/show_error.js.erb (5.9ms)
+Completed 200 OK in 52033.4ms (Views: 32.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-10 15:47:31 -0700
+Connecting to database specified by database.yml
+Processing by VideosController#new as HTML
+  [1m[36mVideo Load (0.2ms)[0m  [1mSELECT "videos".* FROM "videos" WHERE (created_at < '2015-07-10 22:47:31')[0m
+  Rendered videos/_form.html.erb (3.5ms)
+  Rendered videos/_new.html.erb (15.9ms)
+  Rendered videos/new.html.erb within layouts/application (34.7ms)
+Completed 200 OK in 362.6ms (Views: 354.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/media_element/mediaelementplayer.min.css?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /media_element/mediaelementplayer.min.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /custom.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/nprogress.css?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /nprogress.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /jquery.iframe-transport.js - 304 Not Modified (27ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /jquery.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/media_element/mediaelement-and-player.min.js?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /media_element/mediaelement-and-player.min.js - 304 Not Modified (22ms)
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /jquery.remotipart.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/font-awesome-4.0.3/css/font-awesome.min.css?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /font-awesome-4.0.3/css/font-awesome.min.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jqueryValidation/dist/jquery.validate.js?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /jqueryValidation/dist/jquery.validate.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jqueryValidation/dist/additional-methods.js?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /jqueryValidation/dist/additional-methods.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2015-07-10 15:47:32 -0700
+Served asset /bootstrap.min.js - 304 Not Modified (1ms)
+
+
+Started POST "/videos" for 127.0.0.1 at 2015-07-10 15:47:40 -0700
+Processing by VideosController#create as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+GM3JpQcXCQNeoTNUxfYypXoLWJZ31AvrWooV+S1As0=", "video"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x000000050ad318 @original_filename="small.mp4", @content_type="video/mp4", @headers="Content-Disposition: form-data; name=\"video[avatar]\"; filename=\"small.mp4\"\r\nContent-Type: video/mp4\r\n", @tempfile=#<Tempfile:/tmp/RackMultipart20150710-8835-zqkdjp>>}, "video_preview_hidden"=>""}
+[paperclip] [ffmpeg] ffprobe "/tmp/small20150710-8835-io1b4s.mp4" 2>&1
+[paperclip] [ffmpeg] Command Success
+[paperclip] [ffmpeg] Making...
+[paperclip] [ffmpeg] Building Destination File: 'small20150710-8835-io1b4s' + 'mp4'
+[paperclip] [ffmpeg] Destination File Built
+[paperclip] [ffmpeg] Adding Geometry
+[paperclip] [ffmpeg] Extracting Target Dimensions
+[paperclip] [ffmpeg] Target Size is Available
+[paperclip] [ffmpeg] Keeping Aspect Ratio
+[paperclip] [ffmpeg] Resize
+[paperclip] [ffmpeg] Convert Options: 640x364
+[paperclip] [ffmpeg] Adding Format
+[paperclip] [ffmpeg] Adding Source
+[paperclip] [ffmpeg] Building Parameters
+[paperclip] [ffmpeg] -i :source -ar 44100 -s 640x364 -acodec aac -strict experimental -y :dest
+Command :: PATH=/home/ubuntu/bin/:$PATH; avconv -i '/tmp/small20150710-8835-io1b4s.mp4' -ar 44100 -s 640x364 -acodec aac -strict experimental -y '/tmp/small20150710-8835-io1b4s20150710-8835-mg7gss.mp4'
+Command :: PATH=/home/ubuntu/bin/:$PATH; file -b --mime '/tmp/small20150710-8835-io1b4s20150710-8835-mg7gss.mp4'
+[paperclip] [ffmpeg] ffprobe "/tmp/small20150710-8835-io1b4s.mp4" 2>&1
+[paperclip] [ffmpeg] Command Success
+[paperclip] [ffmpeg] Making...
+[paperclip] [ffmpeg] Building Destination File: 'small20150710-8835-io1b4s' + 'webm'
+[paperclip] [ffmpeg] Destination File Built
+[paperclip] [ffmpeg] Adding Geometry
+[paperclip] [ffmpeg] Extracting Target Dimensions
+[paperclip] [ffmpeg] Target Size is Available
+[paperclip] [ffmpeg] Keeping Aspect Ratio
+[paperclip] [ffmpeg] Resize
+[paperclip] [ffmpeg] Convert Options: 1024x584
+[paperclip] [ffmpeg] Adding Format
+[paperclip] [ffmpeg] Adding Source
+[paperclip] [ffmpeg] Building Parameters
+[paperclip] [ffmpeg] -i :source -ar 44100 -s 1024x584 -acodec libvorbis -vcodec libvpx -f webm -y :dest
+Command :: PATH=/home/ubuntu/bin/:$PATH; ffmpeg -i '/tmp/small20150710-8835-io1b4s.mp4' -ar 44100 -s 1024x584 -acodec libvorbis -vcodec libvpx -f webm -y '/tmp/small20150710-8835-io1b4s20150710-8835-vr4dqj.webm'
+Command :: PATH=/home/ubuntu/bin/:$PATH; file -b --mime '/tmp/small20150710-8835-io1b4s20150710-8835-vr4dqj.webm'
+[paperclip] [ffmpeg] ffprobe "/tmp/small20150710-8835-io1b4s.mp4" 2>&1
+[paperclip] [ffmpeg] Command Success
+[paperclip] [ffmpeg] Making...
+[paperclip] [ffmpeg] Building Destination File: 'small20150710-8835-io1b4s' + 'ogg'
+[paperclip] [ffmpeg] Destination File Built
+[paperclip] [ffmpeg] Adding Geometry
+[paperclip] [ffmpeg] Extracting Target Dimensions
+[paperclip] [ffmpeg] Target Size is Available
+[paperclip] [ffmpeg] Keeping Aspect Ratio
+[paperclip] [ffmpeg] Resize
+[paperclip] [ffmpeg] Convert Options: 1024x584
+[paperclip] [ffmpeg] Adding Format
+[paperclip] [ffmpeg] Adding Source
+[paperclip] [ffmpeg] Building Parameters
+[paperclip] [ffmpeg] -i :source -ar 44100 -s 1024x584 -y :dest
+Command :: PATH=/home/ubuntu/bin/:$PATH; ffmpeg -i '/tmp/small20150710-8835-io1b4s.mp4' -ar 44100 -s 1024x584 -y '/tmp/small20150710-8835-io1b4s20150710-8835-8lvz85.ogg'
+Command :: PATH=/home/ubuntu/bin/:$PATH; file -b --mime '/tmp/small20150710-8835-io1b4s20150710-8835-8lvz85.ogg'
+[paperclip] [ffmpeg] ffprobe "/tmp/small20150710-8835-io1b4s.mp4" 2>&1
+[paperclip] [ffmpeg] Command Success
+[paperclip] [ffmpeg] Making...
+[paperclip] [ffmpeg] Building Destination File: 'small20150710-8835-io1b4s' + 'jpg'
+[paperclip] [ffmpeg] Destination File Built
+[paperclip] [ffmpeg] Adding Geometry
+[paperclip] [ffmpeg] Extracting Target Dimensions
+[paperclip] [ffmpeg] Target Size is Available
+[paperclip] [ffmpeg] Keeping Aspect Ratio
+[paperclip] [ffmpeg] Shrink Only
+[paperclip] [ffmpeg] Convert Options: 300x170
+[paperclip] [ffmpeg] Adding Format
+[paperclip] [ffmpeg] Adding Source
+[paperclip] [ffmpeg] Building Parameters
+[paperclip] [ffmpeg] -ss 5 -i :source -s 300x170 -vframes 1 -f image2 -y :dest
+Command :: PATH=/home/ubuntu/bin/:$PATH; ffmpeg -ss 5 -i '/tmp/small20150710-8835-io1b4s.mp4' -s 300x170 -vframes 1 -f image2 -y '/tmp/small20150710-8835-io1b4s20150710-8835-aonqs0.jpg'
+Command :: PATH=/home/ubuntu/bin/:$PATH; file -b --mime '/tmp/small20150710-8835-io1b4s20150710-8835-aonqs0.jpg'
+  [1m[35m (0.2ms)[0m  begin transaction
+Binary data inserted for `string` type on column `avatar_content_type`
+  [1m[36mSQL (49.0ms)[0m  [1mINSERT INTO "videos" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["avatar_content_type", "video/mp4"], ["avatar_file_name", "small.mp4"], ["avatar_file_size", 383631], ["created_at", Fri, 10 Jul 2015 22:48:25 UTC +00:00], ["updated_at", Fri, 10 Jul 2015 22:48:25 UTC +00:00]]
+  [1m[35m (15.3ms)[0m  commit transaction
+  Rendered videos/_show.html.erb (15.0ms)
+  Rendered videos/create.js (31.7ms)
+Completed 200 OK in 45066.9ms (Views: 50.5ms | ActiveRecord: 64.5ms)
+
+
+Started GET "/videos/new" for 127.0.0.1 at 2015-07-10 15:48:39 -0700
+Processing by VideosController#new as HTML
+  [1m[36mVideo Load (0.2ms)[0m  [1mSELECT "videos".* FROM "videos" WHERE (created_at < '2015-07-10 22:47:31')[0m
+  Rendered videos/_form.html.erb (1.7ms)
+  Rendered videos/_new.html.erb (2.3ms)
+  Rendered videos/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 16.9ms (Views: 15.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/media_element/mediaelementplayer.min.css?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /media_element/mediaelementplayer.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/nprogress.css?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /nprogress.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /jquery.iframe-transport.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /jquery.remotipart.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/media_element/mediaelement-and-player.min.js?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /media_element/mediaelement-and-player.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jqueryValidation/dist/jquery.validate.js?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /jqueryValidation/dist/jquery.validate.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jqueryValidation/dist/additional-methods.js?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /jqueryValidation/dist/additional-methods.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /bootstrap.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/font-awesome-4.0.3/css/font-awesome.min.css?body=1" for 127.0.0.1 at 2015-07-10 15:48:40 -0700
+Served asset /font-awesome-4.0.3/css/font-awesome.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-19 04:18:16 -0700
+Connecting to database specified by database.yml
+Processing by VideosController#new as HTML
+  [1m[36mVideo Load (0.2ms)[0m  [1mSELECT "videos".* FROM "videos" WHERE (created_at < '2015-07-19 11:18:16')[0m
+  [1m[35mSQL (22.2ms)[0m  DELETE FROM "videos" WHERE "videos"."id" = 7
+  Rendered videos/_form.html.erb (3.3ms)
+  Rendered videos/_new.html.erb (6.1ms)
+  Rendered videos/new.html.erb within layouts/application (25.7ms)
+Compiled jquery.js  (17ms)  (pid 5976)
+Compiled jquery_ujs.js  (0ms)  (pid 5976)
+Compiled jquery.iframe-transport.js  (9ms)  (pid 5976)
+Compiled jquery.remotipart.js  (103ms)  (pid 5976)
+Compiled application.js  (255ms)  (pid 5976)
+Completed 200 OK in 764.0ms (Views: 597.6ms | ActiveRecord: 22.5ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /custom.css - 200 OK (7ms)
+
+
+Started GET "/assets/nprogress.css?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /nprogress.css - 200 OK (9ms)
+
+
+Started GET "/assets/font-awesome-4.0.3/css/font-awesome.min.css?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /font-awesome-4.0.3/css/font-awesome.min.css - 200 OK (1ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /bootstrap.min.css - 200 OK (6ms)
+
+
+Started GET "/assets/media_element/mediaelementplayer.min.css?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /media_element/mediaelementplayer.min.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /jquery.js - 200 OK (16ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /jquery_ujs.js - 200 OK (5ms)
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /jquery.iframe-transport.js - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /jquery.remotipart.js - 200 OK (9ms)
+
+
+Started GET "/assets/jqueryValidation/dist/jquery.validate.js?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /jqueryValidation/dist/jquery.validate.js - 200 OK (1ms)
+
+
+Started GET "/assets/media_element/mediaelement-and-player.min.js?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /media_element/mediaelement-and-player.min.js - 200 OK (1ms)
+
+
+Started GET "/assets/jqueryValidation/dist/additional-methods.js?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /jqueryValidation/dist/additional-methods.js - 200 OK (1ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2015-07-19 04:18:18 -0700
+Served asset /bootstrap.min.js - 200 OK (7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-19 04:30:33 -0700
+Connecting to database specified by database.yml
+Processing by VideosController#new as HTML
+  [1m[36mVideo Load (0.2ms)[0m  [1mSELECT "videos".* FROM "videos" WHERE (created_at < '2015-07-19 11:30:34')[0m
+  Rendered videos/_form.html.erb (3.7ms)
+  Rendered videos/_new.html.erb (19.5ms)
+  Rendered videos/new.html.erb within layouts/application (41.1ms)
+Warning. Error encountered while saving cache /home/ubuntu/workspace/video_convertor/tmp/cache/sass/fd3dabe648c2ed2e2f79d8102c1ba22765d95a56/font-awesome.css.scss.erbc: can't dump anonymous class #<Class:0x00000002eaa590>
+
+Compiled font-awesome.css  (394ms)  (pid 6381)
+Compiled application.css  (441ms)  (pid 6381)
+Completed 200 OK in 1192.3ms (Views: 1179.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2015-07-19 04:30:35 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/media_element/mediaelementplayer.min.css?body=1" for 127.0.0.1 at 2015-07-19 04:30:35 -0700
+Served asset /media_element/mediaelementplayer.min.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2015-07-19 04:30:35 -0700
+Served asset /custom.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/nprogress.css?body=1" for 127.0.0.1 at 2015-07-19 04:30:35 -0700
+Served asset /nprogress.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/font-awesome.css?body=1" for 127.0.0.1 at 2015-07-19 04:30:36 -0700
+Served asset /font-awesome.css - 200 OK (7ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-07-19 04:30:36 -0700
+Served asset /jquery.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/media_element/mediaelement-and-player.min.js?body=1" for 127.0.0.1 at 2015-07-19 04:30:36 -0700
+Served asset /media_element/mediaelement-and-player.min.js - 304 Not Modified (86ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-07-19 04:30:36 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2015-07-19 04:30:36 -0700
+Served asset /jquery.iframe-transport.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2015-07-19 04:30:36 -0700
+Served asset /jquery.remotipart.js - 304 Not Modified (18ms)
+
+
+Started GET "/assets/jqueryValidation/dist/jquery.validate.js?body=1" for 127.0.0.1 at 2015-07-19 04:30:36 -0700
+Served asset /jqueryValidation/dist/jquery.validate.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jqueryValidation/dist/additional-methods.js?body=1" for 127.0.0.1 at 2015-07-19 04:30:36 -0700
+Served asset /jqueryValidation/dist/additional-methods.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2015-07-19 04:30:36 -0700
+Served asset /bootstrap.min.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/font-awesome-4.0.3/css/font-awesome.min.css?body=1" for 127.0.0.1 at 2015-07-19 04:30:36 -0700
+Served asset /font-awesome-4.0.3/css/font-awesome.min.css - 304 Not Modified (2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-19 04:31:00 -0700
+Processing by VideosController#new as HTML
+  [1m[35mVideo Load (0.2ms)[0m  SELECT "videos".* FROM "videos" WHERE (created_at < '2015-07-19 11:30:34')
+  Rendered videos/_form.html.erb (2.0ms)
+  Rendered videos/_new.html.erb (28.2ms)
+  Rendered videos/new.html.erb within layouts/application (57.7ms)
+Completed 200 OK in 484.1ms (Views: 482.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/media_element/mediaelementplayer.min.css?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /media_element/mediaelementplayer.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/nprogress.css?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /nprogress.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/font-awesome.css?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /font-awesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /jquery.iframe-transport.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /jquery.remotipart.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/media_element/mediaelement-and-player.min.js?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /media_element/mediaelement-and-player.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jqueryValidation/dist/jquery.validate.js?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /jqueryValidation/dist/jquery.validate.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jqueryValidation/dist/additional-methods.js?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /jqueryValidation/dist/additional-methods.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /bootstrap.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/font-awesome-4.0.3/css/font-awesome.min.css?body=1" for 127.0.0.1 at 2015-07-19 04:31:01 -0700
+Served asset /font-awesome-4.0.3/css/font-awesome.min.css - 304 Not Modified (0ms)
