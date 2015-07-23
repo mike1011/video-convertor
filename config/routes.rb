@@ -2,6 +2,7 @@ RubyVideoConvertor::Application.routes.draw do
   resources :videos do
 
       get 'send_video', :on => :collection
+      post 'get_youtube_video' ,:on => :collection
 
    end 
 

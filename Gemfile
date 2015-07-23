@@ -12,7 +12,8 @@ gem 'remotipart'
 gem "heroku"
 gem 'thin'
 
-
+gem 'youtube_it', :git => 'http://github.com/kylejginavan/youtube_it.git'
+gem 'viddl-rb'
 
 
 group :development, :test do

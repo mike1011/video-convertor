@@ -1,4 +1,9 @@
 class VideosController < ApplicationController
+
+require 'open-uri'
+require 'viddl-rb'
+
+
   # GET /videos
   # GET /videos.json
   def index
@@ -93,6 +98,38 @@ class VideosController < ApplicationController
 
 
   end
+
+
+def get_youtube_video
+  # @video = YoutubeVideo.new(params[:youtube_video])
+  # if @video.save!
+  # end  
+# link=params[:youtube_video][:link]
+# p link
+# download_urls = ViddlRb.get_urls(link)
+# download_urls.first     # => "http://o-o.preferred.arn06s04.v3.lscac ..."
+    
+  #YouTubeLinks = ["https://www.youtube.com/watch?v=Z8wLQ3NCBgg","https://www.youtube.com/watch?v=QH2-TGUlwu4"]
+
+youtube_hashes = ["https://www.youtube.com/watch?v=Z8wLQ3NCBgg","https://www.youtube.com/watch?v=QH2-TGUlwu4"].map do |link|
+  ViddlRb.get_urls_names(link).first
+end
+
+youtube_hashes.each do |yt|
+  puts "Downloading: #{yt[:name]}"
+
+  File.open(yt[:name], 'wb') do |video_file|
+    open(yt[:url]) { |video| video_file.write video.read }
+  end
+end
+
+
+
+end
+
+
+
+
 
   # DELETE /videos/1
   # DELETE /videos/1.json

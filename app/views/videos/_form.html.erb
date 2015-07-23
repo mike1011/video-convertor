@@ -61,6 +61,30 @@
 
    <%end%><!-- form ends -->
 
+
+<!-- for youtube -->
+
+
+ <%= form_for(YoutubeVideo.new,:url=>get_youtube_video_videos_path,:html=>{:id=>"yt_video_upload",:multipart => true,:remote=>true,:class=>"form-horizontal",:role=>"form"}) do |f |%>  
+
+
+ <p class="youtube_video_title"> 
+        <%= f.text_field :link ,:placeholder=>"A valid link to the video on YouTube",:style=>"width:70%;color:#000;",required: true %>
+        <label for="title">Add Youtube Link *</label> 
+        
+    </p> 
+     
+
+ 
+         <button type="submit" id="post_button_youtube" class="btn btn-option nposting btn-sm">Download</button>
+ 
+
+
+    <%end%><!-- form ends -->
+
+
+
+
 </div><!--  video container ends -->
 
 <script type="text/javascript">
@@ -151,6 +175,48 @@ $(document).ready(function(){
             
         }
     });//validation ends
+
+
+
+   $("#yt_video_upload").validate({
+        ignore: "", 
+        rules: {
+        "youtube_video[tag_list]": "required",
+          "youtube_video[link]": {
+            required: true,
+            url: true,
+            minlength: 5,
+            maxlength: 500
+              }
+          },
+            errorPlacement: function(error, element) {
+                 $("#show_upload_error_youtube").html("<span class='text-danger' >Fields marked with * are required and cannot be empty.</span>");
+              
+          },
+          invalidHandler: function(e,validator) {
+              //validator.errorList contains an array of objects, where each object has properties "element" and "message".  element is the actual HTML Input.
+              for (var i=0;i<validator.errorList.length;i++){
+                  //key value pair to show id=place_title,hence we need only id(value)
+                  console.log(validator.errorList[i].element.attributes['id'].value);
+                  //remove existing error border and show only new
+                  $("form#yt_video_upload").find("input").css({"border": "none"});
+                     $("#"+validator.errorList[0].element.attributes['id'].value).focus();
+ 
+                    $("#"+validator.errorList[0].element.attributes['id'].value).css({"border": "1px solid red"});  
+                 
+                  
+              }
+            }, 
+          onkeyup: function (element, event) {
+            //will give the id of element in which we are typing to remove red error border on keyup
+            console.log( event.target['id']);
+
+                      $("#"+event.target['id']).css({"border": "none"});
+
+                  
+              
+          }
+             });//validation ends
 
 
 
