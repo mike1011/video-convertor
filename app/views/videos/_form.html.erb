@@ -64,12 +64,12 @@
 
 <!-- for youtube -->
 
-
- <%= form_for(YoutubeVideo.new,:url=>get_youtube_video_videos_path,:html=>{:id=>"yt_video_upload",:multipart => true,:remote=>true,:class=>"form-horizontal",:role=>"form"}) do |f |%>  
+ 
+ <%= form_tag('/videos/get_youtube_video', remote: true,:id=>"yt_video_upload",:multipart => true) do %>
 
 
  <p class="youtube_video_title"> 
-        <%= f.text_field :link ,:placeholder=>"A valid link to the video on YouTube",:style=>"width:70%;color:#000;",required: true %>
+       <%= text_field(:youtube_video, :link, size: 100,:placeholder=>"A valid link to the video on YouTube",:style=>"color:#000 !important;") %>
         <label for="title">Add Youtube Link *</label> 
         
     </p> 

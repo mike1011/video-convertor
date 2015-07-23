@@ -110,8 +110,8 @@ def get_youtube_video
 # download_urls.first     # => "http://o-o.preferred.arn06s04.v3.lscac ..."
     
   #YouTubeLinks = ["https://www.youtube.com/watch?v=Z8wLQ3NCBgg","https://www.youtube.com/watch?v=QH2-TGUlwu4"]
-
-youtube_hashes = ["https://www.youtube.com/watch?v=Z8wLQ3NCBgg","https://www.youtube.com/watch?v=QH2-TGUlwu4"].map do |link|
+link=params[:youtube_video][:link]
+youtube_hashes = [link].map do |link|
   ViddlRb.get_urls_names(link).first
 end
 
@@ -119,8 +119,12 @@ youtube_hashes.each do |yt|
   puts "Downloading: #{yt[:name]}"
 
   File.open(yt[:name], 'wb') do |video_file|
-    open(yt[:url]) { |video| video_file.write video.read }
+    ##video_file << open(yt[:url]) { |video| video_file.write video.read }
+    #send_file_options = { :type => File.mime_type?(path) }
+    send_data   video_file.read, :type => "video/mp4"
+    ##send_file open(yt[:url]) { |video| video_file.write video.read }, :x_sendfile => true     
   end
+
 end
 
 
