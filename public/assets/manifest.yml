@@ -9,10 +9,10 @@ fontawesome-webfont.ttf: fontawesome-webfont-f0ae3ecbc82bc54106ae5a3c2106aa8e.tt
 fontawesome-webfont/index.ttf: fontawesome-webfont-f0ae3ecbc82bc54106ae5a3c2106aa8e.ttf
 fontawesome-webfont.woff: fontawesome-webfont-b586905750c7934cb82ac9c3d7053a96.woff
 fontawesome-webfont/index.woff: fontawesome-webfont-b586905750c7934cb82ac9c3d7053a96.woff
+background.jpeg: background-2f14cb0ff5c0b5fb195733de4a0a5185.jpeg
+background/index.jpeg: background-2f14cb0ff5c0b5fb195733de4a0a5185.jpeg
 delete.png: delete-bb18aa5b39db8504782bb102101d764d.png
 delete/index.png: delete-bb18aa5b39db8504782bb102101d764d.png
-green_suburb.jpg: green_suburb-d204c83beca62006a275d25dd8967723.jpg
-green_suburb/index.jpg: green_suburb-d204c83beca62006a275d25dd8967723.jpg
 jQuery-File-Upload-9.9.3/loading.gif: jQuery-File-Upload-9.9.3/loading-7f0ddb2a62eda55ff60f0b7859eff529.gif
 jQuery-File-Upload-9.9.3/loading/index.gif: jQuery-File-Upload-9.9.3/loading-7f0ddb2a62eda55ff60f0b7859eff529.gif
 rails.png: rails-71e944d9b39043eba50b77788c0d767f.png
@@ -23,8 +23,8 @@ media_element/flashmediaelement.swf: media_element/flashmediaelement-e748b74e62f
 media_element/flashmediaelement/index.swf: media_element/flashmediaelement-e748b74e62ff46f050201b5e9744541a.swf
 media_element/silverlightmediaelement.xap: media_element/silverlightmediaelement-15a1d70856d7621ce3084be89fd6f34b.xap
 media_element/silverlightmediaelement/index.xap: media_element/silverlightmediaelement-15a1d70856d7621ce3084be89fd6f34b.xap
-application.css: application-9b67648e69d3a9a60594c08a7ff864b6.css
-application/index.css: application-9b67648e69d3a9a60594c08a7ff864b6.css
+application.css: application-c8dfd766956f688d877db0d4a7ff974e.css
+application/index.css: application-c8dfd766956f688d877db0d4a7ff974e.css
 media_element/background.png: media_element/background-4a058cb1bf2c4f243b51bff7941df3d1.png
 media_element/background/index.png: media_element/background-4a058cb1bf2c4f243b51bff7941df3d1.png
 media_element/bigplay.png: media_element/bigplay-a36eba495e59ce7b2883adeb61b52905.png

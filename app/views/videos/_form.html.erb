@@ -1,20 +1,5 @@
 <div class="container">
-
-            <br>
-            <div class="row">
-              <small>
-             <div id="flash_messages_video" class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center" style="color: purple; padding: 20px; font-size: medium;display:none;">
-                <% if flash[:error] %>
-                    <%= content_tag :div, flash['value'], :id => "flash_error" %>
-                <% end %>
-            </div>
-            </small>
-            
-         </div>
-
-
-
-            
+           
 
      <!-- The file upload form used as target for the file upload widget -->
 <!--     <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data"> -->
@@ -41,6 +26,7 @@
 
 </div>
 <p class="text-info text-center white" id="show_upload_error"><small>Video Size should not be greater than 25 MB</small></p>
+<p class="text-center" ><small><i class='fa fa-smile-o fa-lg' style='padding-right: 5px'></i>Uploaded videos will get deleted on every new request<i class='fa fa-smile-o fa-lg' style='padding-left: 5px'></i></small></p>
 
             <!-- The table listing the files available for upload/download -->
             <div class="col-lg-12 col table-responsive text-center">
@@ -62,25 +48,7 @@
    <%end%><!-- form ends -->
 
 
-<!-- for youtube -->
 
- 
- <%= form_tag('/videos/get_youtube_video', remote: true,:id=>"yt_video_upload",:multipart => true) do %>
-
-
- <p class="youtube_video_title"> 
-       <%= text_field(:youtube_video, :link, size: 100,:placeholder=>"A valid link to the video on YouTube",:style=>"color:#000 !important;") %>
-        <label for="title">Add Youtube Link *</label> 
-        
-    </p> 
-     
-
- 
-         <button type="submit" id="post_button_youtube" class="btn btn-option nposting btn-sm">Download</button>
- 
-
-
-    <%end%><!-- form ends -->
 
 
 

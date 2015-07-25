@@ -1,25 +1,48 @@
-<h1>Listing videos</h1>
+<style type="text/css">
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @videos.each do |video| %>
-  <tr>
-    <td><%= video.title %></td>
-    <td><%= video.description %></td>
-    <td><%= link_to 'Show', video %></td>
-    <td><%= link_to 'Edit', edit_video_path(video) %></td>
-    <td><%= link_to 'Destroy', video, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+ul#myTabs > li.active > a {
+    background: #b7e079 none repeat scroll 0 0;
+    font-weight: bolder;
+    border-bottom: 4px solid green;
+}
 
-<br />
+ul#myTabs > li > a {
+    background: #b7e0c2 none repeat scroll 0 0;
+    color:#444;
+}
 
-<%= link_to 'New Video', new_video_path %>
+</style>
+
+
+  <ul class="nav nav-tabs nav-justified" id="myTabs">
+    <li class="active"><a href="#home"  data-toggle="tab">Video Convertor</a></li>
+    <li><a href="#profile"  data-toggle="tab" >Youtube Video Downloader</a></li>
+  </ul>
+  
+  <div class="tab-content container-box" >
+        <% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: "flash #{key} text-center pad10" %>
+  <% end %>
+    <div class="tab-pane active mtop " id="home">
+      <%= render "videos/form" %>
+    </div>
+    <div class="tab-pane mtop" id="profile">
+        <%= render "shared/get_youtube_video"%>
+    </div>
+  </div>
+
+<script type="text/javascript">
+
+$(function(){
+
+
+window.setTimeout(function() {
+    $(".flash").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 5000);
+
+})
+
+</script>

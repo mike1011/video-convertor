@@ -1,0 +1,20 @@
+<!-- for youtube -->
+
+ 
+ <%= form_tag('/videos/get_youtube_video',:id=>"yt_video_upload") do %>
+
+
+ <p class="youtube_video_title"> 
+ 	<label for="title">Add Youtube Link *</label> 
+       <%= text_field(:youtube_video, :link, size: 100,:placeholder=>"A valid link to the video on YouTube",:style=>"color:#000 !important;",:required=>true) %>
+        
+        
+    </p> 
+     
+
+ 
+         <button type="submit" id="post_button_youtube" class="btn btn-option nposting btn-sm">Download</button>
+ 
+
+
+    <%end%><!-- form ends -->

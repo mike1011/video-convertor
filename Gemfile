@@ -16,6 +16,10 @@ gem 'youtube_it', :git => 'http://github.com/kylejginavan/youtube_it.git'
 gem 'viddl-rb'
 
 
+##for redis and sidekiq
+gem 'redis'
+gem 'sidekiq'
+
 group :development, :test do
   gem 'sqlite3'
 end

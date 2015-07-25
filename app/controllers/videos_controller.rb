@@ -7,7 +7,9 @@ require 'viddl-rb'
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    #@videos = Video.all
+    Video.delete_database_and_files_on_server
+    @video = Video.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -101,32 +103,29 @@ require 'viddl-rb'
 
 
 def get_youtube_video
-  # @video = YoutubeVideo.new(params[:youtube_video])
-  # if @video.save!
-  # end  
-# link=params[:youtube_video][:link]
-# p link
-# download_urls = ViddlRb.get_urls(link)
-# download_urls.first     # => "http://o-o.preferred.arn06s04.v3.lscac ..."
-    
-  #YouTubeLinks = ["https://www.youtube.com/watch?v=Z8wLQ3NCBgg","https://www.youtube.com/watch?v=QH2-TGUlwu4"]
-link=params[:youtube_video][:link]
-youtube_hashes = [link].map do |link|
-  ViddlRb.get_urls_names(link).first
-end
+ 
+ link=params[:youtube_video][:link]
 
-youtube_hashes.each do |yt|
-  puts "Downloading: #{yt[:name]}"
+ ##validate the link provided by the user
+ @format = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/i
+ if link.present? &&  (link =~ @format)
 
-  File.open(yt[:name], 'wb') do |video_file|
-    ##video_file << open(yt[:url]) { |video| video_file.write video.read }
-    #send_file_options = { :type => File.mime_type?(path) }
-    send_data   video_file.read, :type => "video/mp4"
-    ##send_file open(yt[:url]) { |video| video_file.write video.read }, :x_sendfile => true     
+     youtube_hashes = [link].map do |link|
+      ViddlRb.get_urls_names(link).first
+     end
+
+     youtube_hashes.each do |yt|
+      Rails.logger.info "====Downloading==========: #{yt[:name]}"
+      File.open(yt[:name], 'wb') do |video_file|
+        video_file << open(yt[:url]) { |video| video_file.write video.read }
+        full_path = "#{Rails.root}/#{yt[:name]}"
+        send_file full_path , filename: "#{yt[:name]}", type: "application/octet-stream" #, disposition: 'inline' , stream: 'true', buffer_size: 4096 
+      end 
+     end
+  else
+   redirect_to root_url, :flash => { :error => "Provide a valid youtube link" }
+
   end
-
-end
-
 
 
 end
