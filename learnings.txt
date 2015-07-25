@@ -3,6 +3,8 @@ git commit
 git push origin master
 git push heroku master
 nanao .git/config file to check what is heroku url for git
+==========ffmpeg in heroku============
+https://elements.heroku.com/buildpacks/hyperhyper/heroku-buildpack-ffmpeg
 
 ===============to use fontawesome -------
 download css
