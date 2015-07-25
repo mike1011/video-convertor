@@ -206,7 +206,7 @@ $("a.upload").css({"color": "snow"});
        var ext = $('#video_avatar').val().split('.').pop().toLowerCase();
        console.log("extentsion is :"+ext);
        if($.inArray(ext, ['mp4','flv','webm','avi','ogv','3gp','mov','rm','swf','wmv']) == -1) {
-            $("#show_upload_error").html("<span class='text-danger ' >This is not Video file</span>");
+            $("#show_upload_error").html("<span>This is not Video file</span>");
            //show no files selected
            $('#video_avatar').val("");
                return false;
@@ -215,7 +215,7 @@ $("a.upload").css({"color": "snow"});
     var file = $('#video_avatar')[0].files[0];
     console.log("size is :"+file.size);
    if (file.size && file.size > 26214400) {
-          $("#show_upload_error").html("<span class='text-danger ' >Video size must be within 25 Mb or below</span>");      
+          $("#show_upload_error").html("<span >Video size must be within 25 Mb or below</span>");      
           //show no files selected
            $('#video_avatar').val("");
                return false;   
