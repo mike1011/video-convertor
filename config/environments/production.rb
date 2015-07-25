@@ -6,6 +6,10 @@ RubyVideoConvertor::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+##for heroku /app/vendor/ffmpeg/bin/ffmpeg
+Paperclip.options[:command_path] = "/app/vendor/ffmpeg/bin/ffmpeg"
+
+
 # all must be true==========================
 
   # Code is not reloaded between requests
