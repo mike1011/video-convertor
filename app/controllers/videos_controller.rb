@@ -31,7 +31,7 @@ require 'viddl-rb'
   # GET /videos/new
   # GET /videos/new.json
   def new
-    Video.delete_database_and_files_on_server
+    
     @video = Video.new
    
 
@@ -58,6 +58,7 @@ require 'viddl-rb'
     else
               respond_to do |format|  
                 Rails.logger.info "CONVERSION FAILED=================="
+                p @video.errors
                 #flash.now[:error]="Add a video file"
                 flash.now[:error]="#{@video.errors.full_messages.join(', ')}"
                 format.js { render 'shared/show_error',:locals=>{:type=>"Video"}}
@@ -119,7 +120,7 @@ def get_youtube_video
       File.open(yt[:name], 'wb') do |video_file|
         video_file << open(yt[:url]) { |video| video_file.write video.read }
         full_path = "#{Rails.root}/#{yt[:name]}"
-        send_file full_path , filename: "#{yt[:name]}", type: "application/octet-stream" #, disposition: 'inline' , stream: 'true', buffer_size: 4096 
+        send_file full_path , filename: "#{yt[:name]}", type: "application/octet-stream" , disposition: 'inline' , stream: 'true', buffer_size: 4096 
       end 
      end
   else

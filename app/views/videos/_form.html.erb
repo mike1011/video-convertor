@@ -225,10 +225,9 @@ $("a.upload").css({"color": "snow"});
 //prepare_video_player($("#video_avatar")[0].files[0]);
  var video_size = Math.round($("#video_avatar")[0].files[0]['size']/1048576);
  var video_extention=$('#video_avatar').val().split('.').pop().toLowerCase();
-      tbody.append('<tr class="">'+
-              '<td class="preview" colspan="2"><div id="video_div"></div></td>'+
+      tbody.append('<tr style="background:#b7e079;">'+
             '<td><input type="hidden" name="video_preview_hidden" id="video_preview_hidden" ><p class="name text-info"><strong>'+$("#video_avatar")[0].files[0]['name']+'</strong></p>'+
-             '<p class="size text-info"><small>'+video_extention+'|'+video_size+'MB</small></p>'+
+             '<p class="size text-info"><strong>Format: '+video_extention+'|Size: '+video_size+'MB</strong></p>'+
              '</td>'+
              '</tr>');      
        

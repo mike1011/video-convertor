@@ -8,14 +8,15 @@ RubyVideoConvertor::Application.configure do
 
 
 Paperclip.options[:command_path] = "/usr/bin/identify"
-Paperclip.options[:command_path] = "/home/ubuntu/bin/"
-##config.action_dispatch.x_sendfile_header = "X-Sendfile"
+##for heroku /app/vendor/ffmpeg/bin/ffmpeg
+Paperclip.options[:command_path] = "/home/ubuntu/bin/ffmpeg"
+config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
   # Show full error reports and disable caching
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
