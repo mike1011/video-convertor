@@ -1,0 +1,8 @@
+public/devise/**
+.bundle
+rdoc/**
+log
+test/tmp/**
+tmp
+vendor/ruby
+

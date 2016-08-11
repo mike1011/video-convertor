@@ -50,19 +50,14 @@ require 'viddl-rb'
   # POST /videos.json
   def create
     @video = Video.new(params[:video])
-    if @video.save
-                 respond_to do |format|  
-                  flash.now[:error]="Video converted successfully"
-                    format.js
-                 end   
-    else
-              respond_to do |format|  
-                Rails.logger.info "CONVERSION FAILED=================="
-                p @video.errors
-                #flash.now[:error]="Add a video file"
-                flash.now[:error]="#{@video.errors.full_messages.join(', ')}"
-                format.js { render 'shared/show_error',:locals=>{:type=>"Video"}}
-              end  
+    respond_to do |format|
+      if @video.save
+          format.html { redirect_to hall_video_path(@hall,@video), notice: 'Video was successfully created.' }
+          format.json { render json: {files: [@video.to_videoupload_success] }}
+      else
+          format.html { render :new }
+          format.json { render json: {files: [@video.to_videoupload_error] }}
+      end
     end   
  end
 

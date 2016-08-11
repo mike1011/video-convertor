@@ -5,7 +5,10 @@ git push heroku master
 nanao .git/config file to check what is heroku url for git
 ==========ffmpeg in heroku============
 https://elements.heroku.com/buildpacks/hyperhyper/heroku-buildpack-ffmpeg
-
+============added new file for ffmpeg=============
+chmod +x install_ffmpeg.sh
+./install_ffmpeg.sh ====== to install ffmpeg
+heroku run bash install_ffmpeg.sh
 ===============to use fontawesome -------
 download css
 *= require font-awesome
