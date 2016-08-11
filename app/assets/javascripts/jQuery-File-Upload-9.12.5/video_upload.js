@@ -26,7 +26,7 @@ $(function () {
         cache: false,
         type: 'POST',
         dataType: 'json',
-        autoUpload: true,
+        autoUpload: false,
         singleFileUploads: true,
                
         //TODO-GOOD-8feb-added max and type filter to use only images/audios/videos etc within different scripts
@@ -56,14 +56,10 @@ $(function () {
 
 
 
-// $('#videoupload').bind('fileuploaddone', function (e, data) {
+//  $('#videoupload').bind('fileuploaddone', function (e, data) {
 
-//          //$(".panel-body").find("div.image-preview").hide();
-//          //var responseText = JSON.parse(data.jqXHR.responseText);
-//          //console.log(responseText);
-//          $(".panel-body").find("div.image-preview").hide();
-//          var hall_id= $("#hall_id").val();
-//          $("table#videoUploadPreview tbody.files").html("<tr class='text-center successMsgFileUpload text-info col-md-12 alert alert-success'><td colspan='3'>Video uploaded successfully.<a class='btn btn-primary' href='/halls/"+hall_id+"/videos'>View now</a>  </td></tr>");
+//          var video_id= $("#hidden_video_id").val();
+//          $("table tbody.files").html("<tr class='text-center successMsgFileUpload text-info col-md-12 alert alert-success'><td colspan='3'>Video uploaded successfully.<a class='btn btn-primary' href='/video/"+video_id+"'>View now</a>  </td></tr>");
 
 
 //  });

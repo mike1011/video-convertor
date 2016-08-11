@@ -4,21 +4,20 @@
 
    <%= form_for(@video,:enctype=>"multipart/form-data",:role=>"form",:html=>{:id=>"videoupload" , :class=>"form-horizontal col-xs-12 col-md-8 col-md-offset-2"}) do |f| %>
    
+   <h2><i class="fa fa-video"></i> Video size must be less than 30MB </h2>
+   <p>Convert videos to mp4,webm and ogg(extract only sound)</p>
+   <p><small>video gets autodeleted on every request</small></p>
+   
+   <hr>
+   
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
         <div class="row fileupload-buttonbar">
             <div class="col-lg-12">
                 <!-- The fileinput-button span is used to style the file input field as button -->
-                <span class="btn btn-success fileinput-button">
-                    <i class="fa fa-plus"></i>
-                    <span>Add a Video</span>
-                    <input type="file" name="videos[avatar]" accept="video/*" >
-                </span>
+             <span class="btn btn-default btn-file width-28 btn-option">
+                 Browse a video <input name="video[avatar]" name="fileUpload" type="file" accept="video/*" >
+            </span>
      
-                                
-                <button type="submit" class="btn btn-primary start">
-                    <i class="fa fa-upload"></i>
-                    <span>Start upload</span>
-                </button>
                 <button type="reset" class="btn btn-warning cancel">
                     <i class="fa fa-ban-circle"></i>
                     <span>Cancel upload</span>
@@ -27,10 +26,13 @@
                     <i class="fa fa-trash"></i>
                     <span>Delete</span>
                 </button>
-
+                
+                
+                
+    
             </div>
             <!-- The global progress state -->
-            <div class="col-lg-12 fileupload-progress fade">
+            <div class="col-lg-12 fileupload-progress fade mtop">
                 <!-- The global progress bar -->
                 <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                     <div class="progress-bar progress-bar-success" style="width:0%;"></div>
@@ -40,14 +42,14 @@
             </div>
         </div>
         <!-- The table listing the files available for upload/download -->
-        <table role="presentation" class="table table-striped"><tbody class="files col-xs-12"></tbody></table>
+        <table role="presentation" class="table table-striped well mtop"><tbody class="files "></tbody></table>
     </form>
     <br>
     
     <!-- The template to display files available for upload -->
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
-    <tr class="template-upload fade">
+    <tr class="template-upload fade col-xs-12">
         <td>
             <span class="preview"></span>
         </td>
@@ -75,43 +77,27 @@
 <!-- The template to display files available for download -->
 <script id="template-download" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
-    <tr class="template-download fade">
+    <tr class="template-download fade col-xs-12">
         <td>
-            <span class="preview">
                 {% if (file.thumbnailUrl) { %}
-                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                    <a href="/videos/{%=file.video_id%}" title="{%=file.name%}" class="btn btn-primary" target="_blank"> 
+                    View now</a>
                 {% } %}
-            </span>
+
+              
         </td>
         <td>
-            <p class="name">
-                {% if (file.url) { %}
-                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
-                {% } else { %}
-                    <span>{%=file.name%}</span>
-                {% } %}
-            </p>
-            {% if (file.error) { %}
-                <div><span class="label label-danger">Error</span> {%=file.error%}</div>
-            {% } %}
+                    {% if (file.error) { %}
+                        <p><span> class="label label-danger">Error</span> {%=file.error%}</p>
+                    {% } %}
+                    {% if (file.success) { %}
+                        <p><span class="label label-success">Success</span> {%=file.success%}</p>
+                    {% } %}    
         </td>
         <td>
             <span class="size">{%=o.formatFileSize(file.size)%}</span>
         </td>
-        <td>
-            {% if (file.deleteUrl) { %}
-                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
-                    <i class="fa fa-trash"></i>
-                    <span>Delete</span>
-                </button>
-                <input type="checkbox" name="delete" value="1" class="toggle">
-            {% } else { %}
-                <button class="btn btn-warning cancel">
-                    <i class="fa fa-ban-circle"></i>
-                    <span>Cancel</span>
-                </button>
-            {% } %}
-        </td>
+
     </tr>
 {% } %}
 </script>

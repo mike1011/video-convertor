@@ -1,9 +1,12 @@
 video convertor app
 ==================
-http://video-convertor.herokuapp.com/
+https://video-convertor.herokuapp.com/
 
- its a small ruby on rails application using rails 3.2 and ruby 1.9.3 which can be used to convert any video to mp4,ogg,flv and webm format which user can download.Video conversion and compression is used using FFMPEG which is an open source library to handle any video formats present.
- I am not sure but even youtube uses FFMPEG behind the scenes as different browsers need different video format hence any video should be converted to webm,mp4 and ogg format to be played on any major brower such as Firefox,Opera,IE and Safari.
-
- TODO==
- --As of now,application is deployed on heroku using  ffmpeg bulldpack but as its quite old right now which doesnt support h264 codec,NEED TO FORK THE BUILDPACK.
+ its a small ruby on rails application using rails 3.2 and ruby 2.3.0 which can be used to convert any video to mp4,ogg,flv and webm format which user can also download.
+ 
+ Video conversion and compression is used using FFMPEG which is an open source library to handle any video formats.
+ 
+ I have used a script - install_ffmpeg.sh to install all the libraries needed for FFPEG .
+ 
+ File upload is done by using 'jquery fileupload'- (9.12.5) as of today.
+ Youtube download is done by using 'youtube_it' gem.

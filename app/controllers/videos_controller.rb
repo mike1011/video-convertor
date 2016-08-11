@@ -54,11 +54,15 @@ require 'viddl-rb'
       if @video.save
           format.html { redirect_to hall_video_path(@hall,@video), notice: 'Video was successfully created.' }
           format.json { render json: {files: [@video.to_videoupload_success] }}
+         ##format.js
+         p @video.to_videoupload_success
       else
           format.html { render :new }
           format.json { render json: {files: [@video.to_videoupload_error] }}
       end
     end   
+    p "======================="
+    p @video.errors
  end
 
   # PUT /videos/1
