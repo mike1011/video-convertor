@@ -9,7 +9,7 @@ RubyVideoConvertor::Application.configure do
 
 Paperclip.options[:command_path] = "/usr/bin/identify"
 ##for heroku /app/vendor/ffmpeg/bin/ffmpeg
-Paperclip.options[:command_path] = "/home/ubuntu/bin/ffmpeg"
+Paperclip.options[:command_path] = "/usr/bin/identify"
 config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
   # Log error messages when you accidentally call methods on nil.

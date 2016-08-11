@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-ruby '2.0.0'
+
 gem 'rails', '3.2.19'
 
 # Bundle edge Rails instead:
@@ -60,3 +60,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem "font-awesome-rails"
+gem "bourbon"

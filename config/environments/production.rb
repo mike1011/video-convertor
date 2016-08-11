@@ -7,7 +7,7 @@ RubyVideoConvertor::Application.configure do
   config.action_controller.perform_caching = true
 
 ##for heroku /app/vendor/ffmpeg/bin/ffmpeg
-Paperclip.options[:command_path] = "/app/vendor/ffmpeg/bin/ffmpeg"
+Paperclip.options[:command_path] = "/usr/bin/identify"
 
 
 # all must be true==========================

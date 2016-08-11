@@ -1,48 +1,120 @@
-<div class="container">
+
+<div class="row">
            
 
-     <!-- The file upload form used as target for the file upload widget -->
-<!--     <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data"> -->
- <%= form_for(@video,:html=>{:id=>"videoupload",:multipart => true,:remote=>true,:class=>"form-horizontal col-md-8 col-md-offset-2",:role=>"form"}) do |f |%>
-
-
-
-
-
-   <div class="btn-group btn-group-sm col-md-12 col-md-offset-4">
+   <%= form_for(@video,:enctype=>"multipart/form-data",:role=>"form",:html=>{:id=>"videoupload" , :class=>"form-horizontal col-xs-12 col-md-8 col-md-offset-2"}) do |f| %>
+   
+        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+        <div class="row fileupload-buttonbar">
+            <div class="col-lg-12">
                 <!-- The fileinput-button span is used to style the file input field as button -->
-                <span class="btn btn-option btn-xs fileinput-button">
-                   <a class="upload" href="javascript:void(0);">
-                  <i style="padding-right: 5px" class="fa fa-film fa-lg"></i>
-                  Add a Video *
-                  <input type="file" id="video_avatar" name="video[avatar]" class="opacity" accept="video/*" required>
-                  <input type="hidden" name="video_preview_hidden" id="video_preview_hidden"  required>
-                </a>
-                </span>    
-                <button type="submit" id="submit_button" class="btn btn-primary nposting btn-sm "  data-remote="true">   <i style="padding-right: 5px" class="fa fa-circle-o fa-lg"></i> Convert </button>
-
-
-
-
-</div>
-<p class="text-info text-center white" id="show_upload_error"><small>Video Size should not be greater than 25 MB</small></p>
-<p class="text-center" ><small><i class='fa fa-smile-o fa-lg' style='padding-right: 5px'></i>Uploaded videos will get deleted on every new request<i class='fa fa-smile-o fa-lg' style='padding-left: 5px'></i></small></p>
-
-            <!-- The table listing the files available for upload/download -->
-            <div class="col-lg-12 col table-responsive text-center">
-                    <table role="presentation" class="table table-striped "  id="uploads_table"><tbody class="files"></tbody></table>
-            </div>
-
-
+                <span class="btn btn-success fileinput-button">
+                    <i class="fa fa-plus"></i>
+                    <span>Add a Video</span>
+                    <input type="file" name="videos[avatar]" accept="video/*" >
+                </span>
      
-           
+                                
+                <button type="submit" class="btn btn-primary start">
+                    <i class="fa fa-upload"></i>
+                    <span>Start upload</span>
+                </button>
+                <button type="reset" class="btn btn-warning cancel">
+                    <i class="fa fa-ban-circle"></i>
+                    <span>Cancel upload</span>
+                </button>
+                <button type="button" class="btn btn-danger delete">
+                    <i class="fa fa-trash"></i>
+                    <span>Delete</span>
+                </button>
 
-
-
-
-
-
-
+            </div>
+            <!-- The global progress state -->
+            <div class="col-lg-12 fileupload-progress fade">
+                <!-- The global progress bar -->
+                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                </div>
+                <!-- The extended global progress state -->
+                <div class="progress-extended">&nbsp;</div>
+            </div>
+        </div>
+        <!-- The table listing the files available for upload/download -->
+        <table role="presentation" class="table table-striped"><tbody class="files col-xs-12"></tbody></table>
+    </form>
+    <br>
+    
+    <!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+                <button class="btn btn-primary start" disabled>
+                    <i class="fa fa-upload"></i>
+                    <span>Start</span>
+                </button>
+            {% } %}
+            {% if (!i) { %}
+                <button class="btn btn-warning cancel">
+                    <i class="fa fa-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        <td>
+            <span class="preview">
+                {% if (file.thumbnailUrl) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                {% } %}
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                {% if (file.url) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                {% } else { %}
+                    <span>{%=file.name%}</span>
+                {% } %}
+            </p>
+            {% if (file.error) { %}
+                <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            {% if (file.deleteUrl) { %}
+                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                    <i class="fa fa-trash"></i>
+                    <span>Delete</span>
+                </button>
+                <input type="checkbox" name="delete" value="1" class="toggle">
+            {% } else { %}
+                <button class="btn btn-warning cancel">
+                    <i class="fa fa-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
 
 
    <%end%><!-- form ends -->
@@ -54,190 +126,6 @@
 
 
 </div><!--  video container ends -->
-
-<script type="text/javascript">
-$(document).ready(function(){
-
-      $('#submit_button').removeAttr('disabled');
-
-
-//26may015 using custom js instead of fileupload jquery
-  var $validator = $("#videoupload").validate({
-        rules: {
-       "video[avatar]": {
-                  required: true
-                
-                },
-         "video_preview_hidden": {
-                    required: function(element) {
-                        return $('#uploads_table').children('tbody').size() == 0;
-                    }
-                }, 
-          },
-            errorPlacement: function(error, element) {
-                 $("#show_upload_error").html("<span >Please add a video file</span>");
-              
-          },
-          invalidHandler: function(e,validator) {
-              //validator.errorList contains an array of objects, where each object has properties "element" and "message".  element is the actual HTML Input.
-              for (var i=0;i<validator.errorList.length;i++){
-                  //key value pair to show id=image_title,hence we need only id(value)
-                  console.log(validator.errorList[i].element.attributes['id'].value);
-                  //remove existing error border and show only new
-                  //$("form#videoupload").find("input").css({"color": "red"});
-                  $("a.upload").css({"color": "red"});
-
-                  //remove red from file type also use it in file.change method
-                  $("#video_avatar").parent().parent().find(".upload").css({"color": "#FFFFFF !mportant;"});
-                  $("#"+validator.errorList[0].element.attributes['id'].value).focus();
-                   
-              }
-              //validator.errorMap is an object mapping input names -> error messages
-              //this will display-place[title] : This field is required.
-              // for (var i in validator.errorMap) {
-              //   console.log(i, ":", validator.errorMap[i]);
-              // }
-          }, 
-          onkeyup: function (element, event) {
-            //will give the id of element in which we are typing to remove red error border on keyup
-            //console.log( event.target['id']);
-     
-                     // $("#"+event.target['id']).css({"color": "none"});
-                     $("a.upload").css({"color": "snow"});
-           
-              
-          },
-          submitHandler: function(form) {
-                    //disable the button
-                   $('#submit_button').attr('disabled','disabled');
-                   $("#submit_button").html("Converting <i class='fa fa-spin fa-spinner fa-lg'></i>");
-                     //$('input[type="submit"]').removeAttr('disabled');
-        
-                //using formdata to bind image and submit
-                var formData = new FormData(form);
-                $.ajax({
-                type: 'POST',
-                url: '/videos',
-                data:formData,
-                cache:false,
-                contentType: false,
-                processData: false,
-                 })
-                  .done(function (response) {
-                      if (response.success == 'success') {               
-                          //alert('success');    
-                         // $("#upload_progress_spinner").hide();
-                      } else {
-                          //alert('fail');
-                          $("#submit_button").html("<i style='padding-right: 5px' class='fa fa-circle-o fa-lg'></i> Convert");
-                          $('#submit_button').removeAttr('disabled');
-                          $("#show_upload_error").html("<span class='text-danger marginl10' ><b>There was some error while Posting,Please try again.</b></span>");
-                      }
-                  }).error(function() {
-                    //this will run when no server,or ajax cannot go forward
-                          $("#submit_button").html("<i style='padding-right: 5px' class='fa fa-circle-o fa-lg'></i>  Convert");
-                          $('#submit_button').removeAttr('disabled');
-                          $("#show_upload_error").html("<span class='text-danger marginl10' ><b>There is internal error,Please try again after some time.</b></span>");
-                  });
-             return false; // required to block normal submit since you used ajax
-            
-        }
-    });//validation ends
-
-
-
-   $("#yt_video_upload").validate({
-        ignore: "", 
-        rules: {
-        "youtube_video[tag_list]": "required",
-          "youtube_video[link]": {
-            required: true,
-            url: true,
-            minlength: 5,
-            maxlength: 500
-              }
-          },
-            errorPlacement: function(error, element) {
-                 $("#show_upload_error_youtube").html("<span class='text-danger' >Fields marked with * are required and cannot be empty.</span>");
-              
-          },
-          invalidHandler: function(e,validator) {
-              //validator.errorList contains an array of objects, where each object has properties "element" and "message".  element is the actual HTML Input.
-              for (var i=0;i<validator.errorList.length;i++){
-                  //key value pair to show id=place_title,hence we need only id(value)
-                  console.log(validator.errorList[i].element.attributes['id'].value);
-                  //remove existing error border and show only new
-                  $("form#yt_video_upload").find("input").css({"border": "none"});
-                     $("#"+validator.errorList[0].element.attributes['id'].value).focus();
- 
-                    $("#"+validator.errorList[0].element.attributes['id'].value).css({"border": "1px solid red"});  
-                 
-                  
-              }
-            }, 
-          onkeyup: function (element, event) {
-            //will give the id of element in which we are typing to remove red error border on keyup
-            console.log( event.target['id']);
-
-                      $("#"+event.target['id']).css({"border": "none"});
-
-                  
-              
-          }
-             });//validation ends
-
-
-
-
-
-
-var tbody = $('#uploads_table').children('tbody');
-     $("#video_avatar").change(function(event){
-
-$("a.upload").css({"color": "snow"});
-
-              //remove red color by submitting using jquery.validate
-             $("#video_avatar").parent().parent().find(".upload").css({"color": "#FFFFFF !mportant;"});
-             $("#show_upload_error").html("");
-             //remove the image onchange always
-             $('#uploads_table').children('tbody').html(" ");
-             
-       //check file type
-       var ext = $('#video_avatar').val().split('.').pop().toLowerCase();
-       console.log("extentsion is :"+ext);
-       if($.inArray(ext, ['mp4','flv','webm','avi','ogv','3gp','mov','rm','swf','wmv']) == -1) {
-            $("#show_upload_error").html("<span>This is not Video file</span>");
-           //show no files selected
-           $('#video_avatar').val("");
-               return false;
-           }
- //check file size
-    var file = $('#video_avatar')[0].files[0];
-    console.log("size is :"+file.size);
-   if (file.size && file.size > 26214400) {
-          $("#show_upload_error").html("<span >Video size must be within 25 Mb or below</span>");      
-          //show no files selected
-           $('#video_avatar').val("");
-               return false;   
-             }
-        
-//preview video
-//prepare_video_player($("#video_avatar")[0].files[0]);
- var video_size = Math.round($("#video_avatar")[0].files[0]['size']/1048576);
- var video_extention=$('#video_avatar').val().split('.').pop().toLowerCase();
-      tbody.append('<tr style="background:#b7e079;">'+
-            '<td><input type="hidden" name="video_preview_hidden" id="video_preview_hidden" ><p class="name text-info"><strong>'+$("#video_avatar")[0].files[0]['name']+'</strong></p>'+
-             '<p class="size text-info"><strong>Format: '+video_extention+'|Size: '+video_size+'MB</strong></p>'+
-             '</td>'+
-             '</tr>');      
-       
-     });//method ends
-
-
-})//document ends
-
-
-</script>
 
 
 

@@ -1,15 +1,22 @@
+// Google Fonts
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
+
+
+// Font Variables
+$myFontFamily : 'Playfair Display', serif;
 
 
 
 body{
 
-      background: image-url("background.jpeg") no-repeat center center fixed; 
-     -webkit-background-size: cover;
+    background: image-url("background.jpeg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     color:#fff;
     background-color:#333;
+    font-family: 'Playfair Display', serif !important;
 
 }
 .mtop{

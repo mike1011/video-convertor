@@ -20,7 +20,7 @@ ul#myTabs > li > a {
     <li><a href="#profile"  data-toggle="tab" >Youtube Video Downloader</a></li>
   </ul>
   
-  <div class="tab-content container-box" >
+  <div class="tab-content container-box " >
         <% flash.each do |key, value| %>
     <%= content_tag :div, value, class: "flash #{key} text-center pad10" %>
   <% end %>
