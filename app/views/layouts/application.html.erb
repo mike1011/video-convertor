@@ -8,31 +8,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container" >
-
-<div class="row mbot">
-      <div class="col-md-12 text-center ">
-    <h1 style="text-transform: capitalize; color: rgb(68, 68, 68); font-weight: bold;"><ins>R-Video Convertor/Downloader</ins></h1>
-    <div class="white">
-      <i>Convertor/Downloader</i>
-    </div>
-    <p class="text-muted"><small>need the code? visit my <a href="https://github.com/mike1011" target="blank"><i class="fa fa-github"></i></a></small></p>
-    </div>
-</div>
-
-
+<%= render "shared/navigation"%>  
+<div class="container mtop" >
   <div id="main_content">
       <%= yield %>
     
   </div>
 
 
-
-  <div class="container mtop text-center">
-    <p class="text-muted">This is a beta project using Ruby on Rails 3 and ffmpeg for video conversion</p>
-  </div>
-
 </div>
+
+  <footer class="container mtop text-center">
+    <p class="text-muted">This is a beta project using Ruby on Rails 3 and ffmpeg for video conversion</p>
+  </footer>
 
 
 

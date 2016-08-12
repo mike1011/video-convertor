@@ -19,6 +19,16 @@ body{
     font-family: 'Playfair Display', serif !important;
 
 }
+.navbar-custom{
+  margin-top:0 !important;
+}
+.navbar-brand{
+    color: #fff;
+    font-weight: 900;
+    text-transform: capitalize;
+}
+
+
 .mtop{
   margin-top:20px;
 }
@@ -33,7 +43,7 @@ body{
   padding:40px;
 }
 
-.container-box{
+.container-box,.navbar-custom{
   background-color:#fff;
   color:#fff !important;
   margin:0 auto;
