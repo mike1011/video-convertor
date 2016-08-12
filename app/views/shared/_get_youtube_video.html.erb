@@ -3,7 +3,8 @@
  
  <%= form_tag('/videos/get_youtube_video',:id=>"yt_video_upload") do %>
 
-
+ <h2><i class="fa fa-youtube"></i> Get Youtube Video</h2>
+ <hr>
  <p class="youtube_video_title"> 
  	<label for="title">Add Youtube Link *</label> 
        <%= text_field(:youtube_video, :link, size: 100,:class=>"form-control", :placeholder=>"A valid link to the video on YouTube",:style=>"color:#000 !important;",:required=>true) %>
