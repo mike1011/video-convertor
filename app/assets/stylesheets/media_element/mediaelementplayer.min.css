@@ -95,7 +95,7 @@
 	height: 80px;
 	margin: -40px 0 0 -40px;
 	background: #333;
-	background: url(background.png);
+	background: url(images/background.png);
 	background: rgba(0,0,0,0.9);
 	background: -webkit-gradient(linear,0% 0,0% 100%,from(rgba(50,50,50,0.9)),to(rgba(0,0,0,0.9)));
 	background: -webkit-linear-gradient(top,rgba(50,50,50,0.9),rgba(0,0,0,0.9));

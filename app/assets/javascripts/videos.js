@@ -12,3 +12,20 @@
 //= require jQuery-File-Upload-9.12.5/jquery.fileupload-ui
 //= require jQuery-File-Upload-9.12.5/video_upload
 
+
+/*global $*/
+
+
+$(document).ready(function(){
+    
+    $('video').mediaelementplayer({
+					// when this player starts, it will pause other players
+    				pauseOtherPlayers: true,
+    			    toggleCaptionsButtonWhenOnlyOne: true,
+				    // enables Flash and Silverlight to resize to content size
+				    enableAutosize: true
+    });
+				
+    
+    
+})
