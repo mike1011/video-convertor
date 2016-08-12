@@ -79,3 +79,19 @@ git push origin master
 ...dats it
 updated sass and saas-rails to above version to remove any anonymous class error during precompile
 cleaned and precompiled assets
+
+
+===///////////////DIFFERENT FORMS OF WHERE================tested
+
+
+======basic ActiveRecord (AR):
+MyModel.where("created_at < ?", 2.days.ago)
+
+=====With the underlying Arel interface:
+MyModel.where(MyModel.arel_table[:created_at].lt(2.days.ago))
+
+=====AR + Arel:
+MyModel.where(MyModel[:created_at] < 2.days.ago)
+
+===SQL + AR
+MyModel.where { created_at < 2.days.ago }

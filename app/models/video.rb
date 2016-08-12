@@ -2,8 +2,8 @@ class Video < ActiveRecord::Base
 
 MISSING_VIDEO_URL_PLACEHOLDER = '/assets/no-video.jpg'
 
-
-scope :recents, where('created_at < ?', DateTime.now)
+##GET ALL CREATED 2 DASY AGO
+scope :recents, where("created_at < ?", 2.days.ago)
   validates_presence_of :avatar
   has_attached_file :avatar,
   :styles => {
