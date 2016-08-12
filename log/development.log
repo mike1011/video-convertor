@@ -37435,3 +37435,121 @@ Served asset /loading.gif - 200 OK (0ms)
 
 Started GET "/assets/fontawesome-webfont.ttf" for 110.143.201.149 at 2016-08-12 05:12:05 +0000
 Served asset /fontawesome-webfont.ttf - 200 OK (0ms)
+
+
+Started GET "/" for 110.143.201.149 at 2016-08-12 05:15:23 +0000
+Processing by VideosController#index as HTML
+  [1m[36mVideo Load (0.6ms)[0m  [1mSELECT "videos".* FROM "videos" WHERE (created_at < '2016-08-10 04:42:09.727525')[0m
+  Rendered videos/_form.html.erb (2.3ms)
+  Rendered shared/_get_youtube_video.html.erb (1.1ms)
+  Rendered videos/index.html.erb within layouts/application (6.8ms)
+  Rendered shared/_navigation.html.erb (1.1ms)
+Completed 200 OK in 50.8ms (Views: 47.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 110.143.201.149 at 2016-08-12 05:15:24 +0000
+Served asset /application.css - 200 OK (29ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:24 +0000
+Served asset /jquery.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:24 +0000
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/jquery.ui.widget.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:24 +0000
+Served asset /jQuery-File-Upload-9.12.5/jquery.ui.widget.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/load-image.all.min.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:24 +0000
+Served asset /jQuery-File-Upload-9.12.5/load-image.all.min.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/tmpl.min.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:25 +0000
+Served asset /jQuery-File-Upload-9.12.5/tmpl.min.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/canvas-to-blob.min.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:25 +0000
+Served asset /jQuery-File-Upload-9.12.5/canvas-to-blob.min.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/jquery.iframe-transport.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:25 +0000
+Served asset /jQuery-File-Upload-9.12.5/jquery.iframe-transport.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/jquery.fileupload.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:25 +0000
+Served asset /jQuery-File-Upload-9.12.5/jquery.fileupload.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/jquery.fileupload-process.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:25 +0000
+Served asset /jQuery-File-Upload-9.12.5/jquery.fileupload-process.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/jquery.fileupload-image.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:25 +0000
+Served asset /jQuery-File-Upload-9.12.5/jquery.fileupload-image.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/jquery.blueimp-gallery.min.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:25 +0000
+Served asset /jQuery-File-Upload-9.12.5/jquery.blueimp-gallery.min.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/jquery.fileupload-ui.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /jQuery-File-Upload-9.12.5/jquery.fileupload-ui.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/video_upload.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /jQuery-File-Upload-9.12.5/video_upload.js - 200 OK (0ms)
+
+
+Started GET "/assets/videos.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /videos.js - 200 OK (5ms)
+
+
+Started GET "/assets/media_element/mediaelement-and-player.min.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /media_element/mediaelement-and-player.min.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /bootstrap.min.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/jquery.fileupload-video.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /jQuery-File-Upload-9.12.5/jquery.fileupload-video.js - 200 OK (0ms)
+
+
+Started GET "/assets/jQuery-File-Upload-9.12.5/jquery.fileupload-validate.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /jQuery-File-Upload-9.12.5/jquery.fileupload-validate.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /application.js - 200 OK (7ms)
+
+
+Started GET "/assets/background.jpeg" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /background.jpeg - 200 OK (0ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff2" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /fontawesome-webfont.woff2 - 200 OK (0ms)
+
+
+Started GET "/assets/controls.svg" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /controls.svg - 200 OK (0ms)
+
+
+Started GET "/assets/bigplay.svg" for 110.143.201.149 at 2016-08-12 05:15:26 +0000
+Served asset /bigplay.svg - 200 OK (0ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff" for 110.143.201.149 at 2016-08-12 05:15:27 +0000
+Served asset /fontawesome-webfont.woff - 200 OK (0ms)
+
+
+Started GET "/assets/loading.gif" for 110.143.201.149 at 2016-08-12 05:15:27 +0000
+Served asset /loading.gif - 200 OK (0ms)
+
+
+Started GET "/assets/fontawesome-webfont.ttf" for 110.143.201.149 at 2016-08-12 05:15:27 +0000
+Served asset /fontawesome-webfont.ttf - 200 OK (13ms)
